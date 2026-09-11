@@ -1,7 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
+import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import assemblyWorkerPhoto from "../../assets/photos/assembly-line-worker.jpg";
+import assemblyWidePhoto from "../../assets/photos/assembly-line-wide.jpg";
+import cleanroomPhoto from "../../assets/photos/cleanroom-assembly.jpg";
 
 const qcEquipment = [
   "Salt spray tester",
@@ -25,6 +30,12 @@ const qcEquipment = [
     lede="Both facilities handle final product assembly, functional testing, in-process and outgoing inspection, and packaging — including cleanroom packaging. A finished, inspected, packed product ships from one factory, not parts from three."
   />
 
+  <PhotoBand
+    src={assemblyWorkerPhoto}
+    alt="A Lihengda team member assembling a component on the production line"
+    caption="On the assembly line."
+  />
+
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <div class="grid gap-10 lg:grid-cols-3">
       <div class="prose-body lg:col-span-2">
@@ -36,6 +47,23 @@ const qcEquipment = [
           <li>Packaging, including cleanroom packaging, ready for retail or direct fulfillment</li>
         </ul>
         <p>Inspection reports available on request.</p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <Image
+            src={assemblyWidePhoto}
+            alt="A wide view of the assembly line with several team members at work"
+            widths={[400, 640, 900]}
+            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+            class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+          />
+          <Image
+            src={cleanroomPhoto}
+            alt="Our cleanroom packaging area"
+            widths={[400, 640, 900]}
+            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+            class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+          />
+        </div>
       </div>
 
       <aside class="rounded-lg border border-[var(--color-line)] bg-white p-6">

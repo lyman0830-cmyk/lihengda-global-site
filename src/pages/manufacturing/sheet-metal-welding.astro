@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import tubeBendingPhoto from "../../assets/photos/tube-bending-ningbo.jpg";
 ---
 
 <Layout
@@ -34,6 +36,13 @@ import CtaBanner from "../../components/CtaBanner.astro";
       </div>
       <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
         <h2 class="text-lg font-semibold text-[var(--color-navy)]">Ningbo, China</h2>
+        <Image
+          src={tubeBendingPhoto}
+          alt="A tube bending machine with aluminum tube stock, Ningbo facility"
+          widths={[400, 640, 900]}
+          sizes="(min-width: 768px) 420px, 100vw"
+          class="mt-4 w-full rounded-md border border-[var(--color-line)] object-cover"
+        />
         <ul class="mt-4 space-y-2 text-sm text-slate-700">
           <li>Welding</li>
           <li>Tube bending</li>

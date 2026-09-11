@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
+import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
+import injectionMoldingPhoto from "../../assets/photos/injection-molding-machines.jpg";
 ---
 
 <Layout
@@ -12,6 +14,12 @@ import CtaBanner from "../../components/CtaBanner.astro";
     eyebrow="Manufacturing / Injection Molding"
     title="Injection Molding — including insert molding and overmolding"
     lede="Both our Ningbo, China and Ho Chi Minh City, Vietnam facilities run injection molding in-house, including insert molding and overmolding for parts that combine plastic with metal or a soft-touch grip."
+  />
+
+  <PhotoBand
+    src={injectionMoldingPhoto}
+    alt="A row of injection molding machines on our production floor"
+    caption="Injection molding machines, Ningbo facility."
   />
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">

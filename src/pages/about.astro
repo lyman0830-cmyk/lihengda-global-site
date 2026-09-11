@@ -1,7 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import officePhoto from "../assets/photos/ningbo-office-corridor.jpg";
+import entrancePhoto from "../assets/photos/ningbo-facility-entrance.jpg";
 ---
 
 <Layout
@@ -9,6 +13,12 @@ import CtaBanner from "../components/CtaBanner.astro";
   description="Lihengda operates two manufacturing bases: Ningbo Lihengda Machinery Co., Ltd. in Ningbo, China (est. 2009) and Lihengda (Vietnam) International Co., Ltd. in Ho Chi Minh City (est. 2025)."
 >
   <PageHero eyebrow="About" title="About Lihengda" />
+
+  <PhotoBand
+    src={officePhoto}
+    alt="The office corridor at our Ningbo facility"
+    caption="Our Ningbo office."
+  />
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <div class="grid gap-10 lg:grid-cols-3">
@@ -20,6 +30,14 @@ import CtaBanner from "../components/CtaBanner.astro";
           Ho Chi Minh City to give customers a manufacturing option outside
           China. The Vietnam company is a subsidiary of the Ningbo company.
         </p>
+
+        <Image
+          src={entrancePhoto}
+          alt="The entrance to our Ningbo facility"
+          widths={[400, 640, 900]}
+          sizes="(min-width: 1024px) 700px, 100vw"
+          class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+        />
 
         <h2 class="text-lg font-semibold text-[var(--color-navy)]">Compliance</h2>
         <ul>
