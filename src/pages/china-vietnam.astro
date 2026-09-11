@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import ningboPhoto from "../assets/photos/ningbo-facility-entrance.jpg";
+import vietnamPhoto from "../assets/photos/vietnam-facility-entrance.jpg";
 
 const rows: [string, string, string][] = [
   ["Since", "2009", "2025"],
@@ -57,8 +58,15 @@ const rows: [string, string, string][] = [
         </div>
       </div>
 
-      <div class="relative flex h-80 flex-col justify-end overflow-hidden rounded-xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-navy-2)] to-[var(--color-steel)]">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, white 1px, transparent 1px); background-size: 22px 22px;"></div>
+      <div class="relative flex h-80 flex-col justify-end overflow-hidden rounded-xl border border-[var(--color-line)]">
+        <Image
+          src={vietnamPhoto}
+          alt="Entrance to our Ho Chi Minh City, Vietnam facility"
+          widths={[480, 768, 1100]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
         <div class="relative p-6">
           <p class="text-xs font-semibold uppercase tracking-wide text-white/70">Subsidiary · Since 2025</p>
           <h2 class="mt-1 text-2xl font-bold text-white">Ho Chi Minh City, Vietnam</h2>

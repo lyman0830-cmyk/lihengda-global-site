@@ -37,7 +37,12 @@ const services = [
     eyebrow="Engineering & Development"
     title="We don't have our own products. We build yours."
     lede="We're not a brand — we're the engineering and manufacturing behind one. Every project starts with a DFM review, a tooling plan and a material choice, before a single part gets made."
-  />
+  >
+    <div class="mt-6 flex items-center gap-3 text-sm text-slate-600">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--color-bg)] text-xs font-bold text-[var(--color-navy)]">5</span>
+      <span>engineers, working in SolidWorks and UG (NX)</span>
+    </div>
+  </PageHero>
 
   <PhotoBand
     src={engineeringPhoto}
@@ -62,6 +67,65 @@ const services = [
         and verifying <em>your</em> design. We don't do brand-side industrial
         design or styling work from a blank page.
       </p>
+    </div>
+  </section>
+
+  <!-- Illustrative DFM example -->
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">A DFM review, in practice</p>
+      <h2 class="mt-2 max-w-2xl text-2xl font-bold text-[var(--color-navy)] sm:text-3xl">
+        Catching a sink-mark risk before the mold gets cut
+      </h2>
+      <p class="mt-3 max-w-2xl text-sm text-slate-500">
+        Illustrative example — a generic part, not a client project.
+      </p>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6">
+          <svg viewBox="0 0 360 220" class="w-full" role="img" aria-labelledby="dfm-before-title">
+            <title id="dfm-before-title">Before: rib thickness close to wall thickness, causing a sink mark</title>
+            <rect x="20" y="40" width="320" height="24" fill="#c7ccd3" />
+            <rect x="160" y="64" width="40" height="90" fill="#c7ccd3" />
+            <circle cx="180" cy="46" r="7" fill="none" stroke="#dc8a2e" stroke-width="2.5" stroke-dasharray="3 3" />
+            <line x1="120" y1="90" x2="20" y2="90" stroke="#8a93a1" stroke-width="1" />
+            <line x1="120" y1="130" x2="20" y2="130" stroke="#8a93a1" stroke-width="1" />
+            <line x1="20" y1="90" x2="20" y2="130" stroke="#8a93a1" stroke-width="1" />
+            <text x="10" y="115" fill="#5b6472" font-size="11" text-anchor="end" transform="rotate(-90 10 115)">wall t</text>
+            <line x1="160" y1="170" x2="200" y2="170" stroke="#8a93a1" stroke-width="1" />
+            <text x="180" y="185" fill="#5b6472" font-size="11" text-anchor="middle">rib ≈ 80% of wall t</text>
+            <text x="180" y="25" fill="#b3541a" font-size="12" font-weight="700" text-anchor="middle">Sink mark risk</text>
+          </svg>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">
+            <strong>Before.</strong> The rib is nearly as thick as the outer
+            wall. As the part cools, the thicker junction shrinks unevenly
+            and pulls a visible dimple into the outer face.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6">
+          <svg viewBox="0 0 360 220" class="w-full" role="img" aria-labelledby="dfm-after-title">
+            <title id="dfm-after-title">After: rib thickness reduced and cored, sink mark eliminated</title>
+            <rect x="20" y="40" width="320" height="24" fill="#c7ccd3" />
+            <rect x="168" y="64" width="24" height="90" fill="#c7ccd3" />
+            <rect x="174" y="64" width="12" height="60" fill="var(--color-bg)" stroke="#8a93a1" stroke-width="1" stroke-dasharray="2 2" />
+            <path d="M172 44 l6 7 l10 -12" fill="none" stroke="#2f7a4f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <line x1="120" y1="90" x2="20" y2="90" stroke="#8a93a1" stroke-width="1" />
+            <line x1="120" y1="130" x2="20" y2="130" stroke="#8a93a1" stroke-width="1" />
+            <line x1="20" y1="90" x2="20" y2="130" stroke="#8a93a1" stroke-width="1" />
+            <text x="10" y="115" fill="#5b6472" font-size="11" text-anchor="end" transform="rotate(-90 10 115)">wall t</text>
+            <line x1="168" y1="170" x2="192" y2="170" stroke="#8a93a1" stroke-width="1" />
+            <text x="180" y="185" fill="#5b6472" font-size="11" text-anchor="middle">rib ≈ 55% + cored</text>
+            <text x="180" y="25" fill="#2f7a4f" font-size="12" font-weight="700" text-anchor="middle">Risk resolved</text>
+          </svg>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">
+            <strong>After.</strong> Reducing the rib to roughly half the wall
+            thickness and adding a cored channel keeps the same outer
+            geometry the customer specified, with even cooling and no sink
+            mark — caught in review, before steel was cut.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 

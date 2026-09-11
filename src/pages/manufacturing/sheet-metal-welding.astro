@@ -2,8 +2,10 @@
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
+import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import tubeBendingPhoto from "../../assets/photos/tube-bending-ningbo.jpg";
+import laserCuttingPhoto from "../../assets/photos/vietnam-laser-cutting.jpg";
 ---
 
 <Layout
@@ -16,6 +18,12 @@ import tubeBendingPhoto from "../../assets/photos/tube-bending-ningbo.jpg";
     lede="Metal frames and enclosures are welded, finished and fed straight into assembly alongside the molded parts. Materials: stainless steel, carbon steel, aluminum, zinc alloy."
   />
 
+  <PhotoBand
+    src={laserCuttingPhoto}
+    alt="Laser cutting machine on our Vietnam production floor"
+    caption="Laser cutting, Vietnam facility."
+  />
+
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <p class="max-w-3xl text-sm text-slate-600">
       Our two bases specialize differently here — tell us what your part
@@ -26,6 +34,13 @@ import tubeBendingPhoto from "../../assets/photos/tube-bending-ningbo.jpg";
     <div class="mt-8 grid gap-6 md:grid-cols-2">
       <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
         <h2 class="text-lg font-semibold text-[var(--color-navy)]">Ho Chi Minh City, Vietnam</h2>
+        <Image
+          src={laserCuttingPhoto}
+          alt="Laser cutting machine, Vietnam facility"
+          widths={[400, 640, 900]}
+          sizes="(min-width: 768px) 420px, 100vw"
+          class="mt-4 w-full rounded-md border border-[var(--color-line)] object-cover"
+        />
         <ul class="mt-4 space-y-2 text-sm text-slate-700">
           <li>Laser cutting</li>
           <li>Laser tube cutting</li>

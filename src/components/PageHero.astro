@@ -18,5 +18,6 @@ const { eyebrow, title, lede } = Astro.props;
     {lede && (
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">{lede}</p>
     )}
+    <slot />
   </div>
 </section>

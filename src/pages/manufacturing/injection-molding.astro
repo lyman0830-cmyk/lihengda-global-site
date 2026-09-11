@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import injectionMoldingPhoto from "../../assets/photos/injection-molding-machines.jpg";
+import vietnamInjectionPhoto from "../../assets/photos/vietnam-injection-molding.jpg";
 ---
 
 <Layout
@@ -45,6 +47,29 @@ import injectionMoldingPhoto from "../../assets/photos/injection-molding-machine
             If your part needs two-shot molding, tell us early in the DFM
             review and we'll say so up front rather than after tooling starts.
           </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div>
+            <Image
+              src={injectionMoldingPhoto}
+              alt="Injection molding machines, Ningbo facility"
+              widths={[400, 640, 900]}
+              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+              class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+            />
+            <p class="mt-2 text-xs text-slate-500">Ningbo, China</p>
+          </div>
+          <div>
+            <Image
+              src={vietnamInjectionPhoto}
+              alt="Injection molding machines, Vietnam facility"
+              widths={[400, 640, 900]}
+              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+              class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+            />
+            <p class="mt-2 text-xs text-slate-500">Ho Chi Minh City, Vietnam</p>
+          </div>
         </div>
       </div>
 
