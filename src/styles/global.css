@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #101a24;
+  --color-navy: #10233a;
+  --color-navy-2: #16324f;
+  --color-steel: #2f6690;
+  --color-steel-light: #4a89b8;
+  --color-bg: #f7f8fa;
+  --color-line: #e2e5ea;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.prose-body :where(p) {
+  margin-bottom: 1em;
+  line-height: 1.75;
+}
+
+.prose-body :where(ul) {
+  list-style: disc;
+  padding-left: 1.25em;
+  margin-bottom: 1em;
+}
+
+.prose-body :where(li) {
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+
+.prose-body :where(strong) {
+  color: var(--color-navy);
+}

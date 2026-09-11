@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+---
+
+<Layout
+  title="CNC Machining"
+  description="CNC machining at both our Ningbo, China and Ho Chi Minh City, Vietnam facilities for metal parts, fixtures and low-volume components."
+>
+  <PageHero
+    eyebrow="Manufacturing / CNC Machining"
+    title="CNC Machining"
+    lede="CNC machining at both bases for metal parts, fixtures and low-volume components, working alongside our molding and sheet-metal lines."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="prose-body max-w-3xl">
+      <p>
+        We run CNC machining in-house at both our Ningbo, China and Ho Chi
+        Minh City, Vietnam facilities — useful for fixtures, low-volume
+        metal parts, and components that complement our molding and sheet
+        metal lines.
+      </p>
+      <p><strong>Materials:</strong> aluminum, stainless steel, carbon steel, zinc alloy, POM.</p>
+    </div>
+  </section>
+
+  <CtaBanner heading="Have a machined part to quote?" body="Send us the drawing and target volume and we'll get back to you within 2 business days." />
+</Layout>

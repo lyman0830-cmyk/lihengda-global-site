@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const categories = [
+  { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components." },
+  { title: "Home & living products", body: "Everyday products that need consistent fit, finish and assembly." },
+  { title: "Pet products", body: "Durable plastic and metal builds for daily use." },
+  { title: "Personal care & grooming tools", body: "Including plastic and zinc-alloy razors — a category we build today." },
+  { title: "Bath accessories, storage & cleaning tools", body: "Molded and metal components assembled and packed as a finished product." },
+  { title: "Woodworking tools", body: "Metal and plastic tool components built to spec." },
+];
+---
+
+<Layout
+  title="Industries"
+  description="Kitchen, home, pet, personal care, bath and woodworking products — plastic and metal components, assembled, inspected and packed."
+>
+  <PageHero
+    eyebrow="Industries"
+    title="Products we build"
+    lede="We're strongest on products that combine a molded plastic part with a metal component — and need assembly, inspection and packaging to finish the job."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {categories.map((c) => (
+        <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+          <h2 class="text-base font-semibold text-[var(--color-navy)]">{c.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner heading="Don't see your category?" body="If it combines plastic and metal and needs assembly, tell us about it — we probably still fit." />
+</Layout>

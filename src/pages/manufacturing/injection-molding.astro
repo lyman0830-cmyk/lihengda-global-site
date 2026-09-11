@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+---
+
+<Layout
+  title="Injection Molding"
+  description="Injection molding, insert molding and overmolding at both our Ningbo, China and Ho Chi Minh City, Vietnam facilities. Soft and aluminum tooling for low-volume runs. No two-shot molding."
+>
+  <PageHero
+    eyebrow="Manufacturing / Injection Molding"
+    title="Injection Molding — including insert molding and overmolding"
+    lede="Both our Ningbo, China and Ho Chi Minh City, Vietnam facilities run injection molding in-house, including insert molding and overmolding for parts that combine plastic with metal or a soft-touch grip."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="prose-body lg:col-span-2">
+        <h2 class="text-xl font-semibold text-[var(--color-navy)]">What we run</h2>
+        <ul>
+          <li><strong>Materials:</strong> ABS, PP, PE, PA, POM.</li>
+          <li><strong>Insert molding</strong> — plastic molded directly around a metal insert in one operation.</li>
+          <li><strong>Overmolding</strong> — a second material (often a soft-touch grip) molded onto a base part.</li>
+          <li><strong>Tooling:</strong> soft and aluminum tooling for low-volume and crowdfunding-stage runs; steel tooling for volume production.</li>
+        </ul>
+        <p>
+          Molded parts flow directly into our assembly and inspection lines —
+          one supplier, one shipment, instead of parts changing hands between
+          a molder, an assembler and a packer.
+        </p>
+        <div class="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-5">
+          <p class="text-sm font-semibold text-amber-900">
+            We do not offer two-shot (two-color) molding at either facility.
+          </p>
+          <p class="mt-1 text-sm text-amber-800">
+            If your part needs two-shot molding, tell us early in the DFM
+            review and we'll say so up front rather than after tooling starts.
+          </p>
+        </div>
+      </div>
+
+      <aside class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">Both bases</h3>
+        <ul class="mt-4 space-y-2 text-sm text-slate-700">
+          <li>Injection molding</li>
+          <li>Insert molding</li>
+          <li>Overmolding</li>
+        </ul>
+        <p class="mt-6 text-sm text-slate-600">
+          Not sure whether China or Vietnam fits your project better?
+        </p>
+        <a href="/china-vietnam/" class="mt-2 inline-block text-sm font-semibold text-[var(--color-steel)] hover:underline">
+          Compare the two bases &rarr;
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <CtaBanner heading="Have a part that needs molding?" body="Send us the geometry and target volume and we'll tell you which tooling approach and base makes sense." />
+</Layout>

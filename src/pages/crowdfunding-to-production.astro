@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const steps = [
+  { title: "DFM review", body: "We look at your CAD and flag tooling, tolerance and assembly risks before you spend on molds." },
+  { title: "Soft / aluminum tooling", body: "Lower tooling cost and faster first parts for pilot-stage volumes." },
+  { title: "Pilot run → production", body: "1,000–5,000 unit runs are normal for us; larger volumes scale into steel tooling." },
+  { title: "Box-build assembly, inspection, packaging", body: "A finished, packed product, not a box of parts." },
+];
+---
+
+<Layout
+  title="Crowdfunding to Production"
+  description="If your Kickstarter or Indiegogo campaign delivered and you now need real production, we take it from DFM review through tooling, pilot run and box-build assembly."
+>
+  <PageHero
+    eyebrow="Crowdfunding to Production"
+    title="You funded it. Now build it — properly."
+    lede="If your Kickstarter or Indiegogo campaign delivered and you now need real production, you need more than a prototype shop. You need tooling, molding, metal work, assembly, inspection and packaging in one place — and honest lead times."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h2 class="text-xl font-semibold text-[var(--color-navy)]">What we do for funded projects</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      {steps.map((s, i) => (
+        <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+          <span class="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-navy)] text-xs font-bold text-white">
+            {i + 1}
+          </span>
+          <h3 class="mt-3 text-base font-semibold text-[var(--color-navy)]">{s.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-xl font-semibold text-[var(--color-navy)]">China or Vietnam</h2>
+      <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
+        Not sure which base fits your campaign? We help you choose based on
+        your target market, tariff exposure and volume.
+      </p>
+      <a href="/china-vietnam/" class="mt-3 inline-block text-sm font-semibold text-[var(--color-steel)] hover:underline">
+        Compare China &amp; Vietnam &rarr;
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+      <h2 class="text-base font-semibold text-[var(--color-navy)]">Honest lead times</h2>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        Prototyping typically runs 15–30 days; tooling around 50 days
+        depending on complexity. We will give you a real schedule, not a
+        sales number.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner heading="Send your CAD for a DFM review" body="Tell us about your campaign, target volume and timeline." />
+</Layout>

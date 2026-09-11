@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+const qcEquipment = [
+  "Salt spray tester",
+  "Temperature chamber",
+  "Colorimeter",
+  "CMM (coordinate measuring machine)",
+  "Profile projector",
+  "Tensile tester",
+  "Hardness tester",
+  "Standard gauges (pin gauges, protractors, calipers)",
+];
+---
+
+<Layout
+  title="Box-Build Assembly, Inspection & Packaging"
+  description="Final product assembly, functional testing, inspection and packaging — including cleanroom packaging — at both our Ningbo, China and Vietnam facilities."
+>
+  <PageHero
+    eyebrow="Manufacturing / Box-Build Assembly, Inspection & Packaging"
+    title="Box-Build Assembly, Inspection & Packaging"
+    lede="Both facilities handle final product assembly, functional testing, in-process and outgoing inspection, and packaging — including cleanroom packaging. A finished, inspected, packed product ships from one factory, not parts from three."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="prose-body lg:col-span-2">
+        <h2 class="text-xl font-semibold text-[var(--color-navy)]">What happens after molding and metal work</h2>
+        <ul>
+          <li>Final product assembly</li>
+          <li>Functional testing</li>
+          <li>In-process and outgoing inspection</li>
+          <li>Packaging, including cleanroom packaging, ready for retail or direct fulfillment</li>
+        </ul>
+        <p>Inspection reports available on request.</p>
+      </div>
+
+      <aside class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">
+          Ningbo QC lab
+        </h3>
+        <p class="mt-3 text-sm text-slate-600">
+          Our Ningbo facility's in-house QC lab includes:
+        </p>
+        <ul class="mt-3 space-y-2 text-sm text-slate-700">
+          {qcEquipment.map((item) => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <CtaBanner heading="Need reliability or dimensional testing?" body="Tell us what your product needs to pass and we'll confirm what we can run in-house." />
+</Layout>

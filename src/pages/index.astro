@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const proofPoints = [
+  {
+    title: "Plastic + metal in one supplier",
+    body: "Injection molding, sheet metal fabrication, welding, CNC machining and box-build assembly, all in-house — not farmed out between vendors.",
+  },
+  {
+    title: "China or Vietnam",
+    body: "Choose the base that fits your tariffs, cost target and country-of-origin strategy — or split a program across both.",
+  },
+  {
+    title: "You talk to the people who run the factory",
+    body: "Direct answers from the team on the ground, not a layered sales chain.",
+  },
+];
+
+const processCards = [
+  { href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs." },
+  { href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding." },
+  { href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components alongside our molding lines." },
+  { href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection and retail-ready packaging." },
+];
+---
+
+<Layout
+  title="Home"
+  description="Lihengda runs two manufacturing bases — Ningbo, China and Ho Chi Minh City, Vietnam. Plastic and metal consumer products built complete: molding, metal fabrication, assembly, inspection and retail-ready packaging."
+>
+  <section class="border-b border-[var(--color-line)] bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">
+        Two manufacturing bases. One point of contact.
+      </p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl md:text-6xl">
+        Plastic and metal products, built complete — in China or Vietnam.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+        Lihengda runs two manufacturing bases — Ningbo, China (since 2009) and
+        Ho Chi Minh City, Vietnam (since 2025). We take plastic and metal
+        consumer products from tooling through assembly, inspection and
+        retail-ready packaging, under one point of contact.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/contact/"
+          class="rounded-md bg-[var(--color-steel)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)]"
+        >
+          Request a Quote
+        </a>
+        <a
+          href="/china-vietnam/"
+          class="rounded-md border border-[var(--color-line)] px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-steel)] hover:text-[var(--color-steel)]"
+        >
+          Compare China &amp; Vietnam
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-8 md:grid-cols-3">
+      {proofPoints.map((p) => (
+        <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+          <h2 class="text-lg font-semibold text-[var(--color-navy)]">{p.title}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl font-bold text-[var(--color-navy)]">What we build in-house</h2>
+        <a href="/manufacturing/" class="text-sm font-semibold text-[var(--color-steel)] hover:underline">
+          See the full process &rarr;
+        </a>
+      </div>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {processCards.map((c) => (
+          <a href={c.href} class="group rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6 transition hover:border-[var(--color-steel)]">
+            <h3 class="text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{c.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

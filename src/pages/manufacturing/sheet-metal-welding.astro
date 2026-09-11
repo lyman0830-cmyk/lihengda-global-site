@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+---
+
+<Layout
+  title="Sheet Metal Fabrication & Welding"
+  description="Laser cutting, laser tube cutting, bending, robotic and TIG welding at our Vietnam facility; welding and tube bending at our Ningbo, China facility."
+>
+  <PageHero
+    eyebrow="Manufacturing / Sheet Metal & Welding"
+    title="Sheet Metal Fabrication & Welding"
+    lede="Metal frames and enclosures are welded, finished and fed straight into assembly alongside the molded parts. Materials: stainless steel, carbon steel, aluminum, zinc alloy."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <p class="max-w-3xl text-sm text-slate-600">
+      Our two bases specialize differently here — tell us what your part
+      needs and we'll route it to the right one, or combine both in a single
+      program.
+    </p>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+        <h2 class="text-lg font-semibold text-[var(--color-navy)]">Ho Chi Minh City, Vietnam</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slate-700">
+          <li>Laser cutting</li>
+          <li>Laser tube cutting</li>
+          <li>Bending</li>
+          <li>Robotic welding</li>
+          <li>TIG welding</li>
+        </ul>
+      </div>
+      <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+        <h2 class="text-lg font-semibold text-[var(--color-navy)]">Ningbo, China</h2>
+        <ul class="mt-4 space-y-2 text-sm text-slate-700">
+          <li>Welding</li>
+          <li>Tube bending</li>
+        </ul>
+        <p class="mt-4 text-sm text-slate-500">
+          Need laser cutting, laser tube cutting or bending? Our Vietnam
+          facility handles those — see the
+          <a href="/china-vietnam/" class="font-semibold text-[var(--color-steel)] hover:underline">China &amp; Vietnam comparison</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner heading="Have a metal part to fabricate?" body="Tell us the process and volume and we'll point you to the base that fits." />
+</Layout>

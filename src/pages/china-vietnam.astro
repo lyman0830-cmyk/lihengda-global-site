@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const rows: [string, string, string][] = [
+  ["Since", "2009", "2025"],
+  ["Site", "~6,000 m²", "~7,707 m², 3 production buildings"],
+  [
+    "In-house processes",
+    "CNC machining, injection molding (incl. insert molding, overmolding; no two-shot), welding, tube bending, box-build assembly, functional testing, inspection, packaging (incl. cleanroom)",
+    "Injection molding (incl. insert molding, overmolding; no two-shot), laser cutting, laser tube cutting, bending, robotic & TIG welding, CNC machining, assembly, functional testing, inspection, packaging (incl. cleanroom)",
+  ],
+  [
+    "QC lab",
+    "Salt spray tester, temperature chamber, colorimeter, CMM, profile projector, tensile tester, hardness tester, standard gauges",
+    "Inspection reports available on request",
+  ],
+  [
+    "Best when you need",
+    "mature supply chain, cost efficiency, established tooling, in-house metrology / reliability testing",
+    "country-of-origin outside China, tariff exposure management, China+1 supply chain, sheet metal (laser cutting, laser tube cutting)",
+  ],
+  ["Relationship", "Parent company", "Subsidiary of the Ningbo company"],
+];
+---
+
+<Layout
+  title="China & Vietnam"
+  description="Two manufacturing bases, one point of contact. Compare Ningbo, China and Ho Chi Minh City, Vietnam — or let us recommend one for your project."
+>
+  <PageHero
+    eyebrow="China & Vietnam"
+    title="Two manufacturing bases. One point of contact."
+    lede="Not sure which base fits? Tell us your target market, tariff situation and volume, and we will recommend one — or split the program across both."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="overflow-x-auto rounded-lg border border-[var(--color-line)] bg-white">
+      <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-[var(--color-line)] bg-[var(--color-bg)]">
+            <th class="w-40 px-5 py-4 font-semibold text-[var(--color-navy)]">&nbsp;</th>
+            <th class="px-5 py-4 font-semibold text-[var(--color-navy)]">Ningbo, China</th>
+            <th class="px-5 py-4 font-semibold text-[var(--color-navy)]">Ho Chi Minh City, Vietnam</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([label, china, vietnam]) => (
+            <tr class="border-b border-[var(--color-line)] align-top last:border-0">
+              <th class="w-40 px-5 py-4 font-medium text-slate-500">{label}</th>
+              <td class="px-5 py-4 leading-relaxed text-slate-700">{china}</td>
+              <td class="px-5 py-4 leading-relaxed text-slate-700">{vietnam}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <CtaBanner heading="Ask us which base fits your project" body="Send your target market, tariff situation and volume — we'll recommend China, Vietnam, or both." />
+</Layout>

@@ -1,0 +1,76 @@
+---
+import { NAV } from "../lib/nav";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-white/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight text-[var(--color-navy)]">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-[var(--color-navy)] text-sm font-black text-white">L</span>
+      Lihengda Global
+    </a>
+
+    <nav class="hidden items-center gap-5 whitespace-nowrap text-sm font-medium text-slate-700 lg:flex">
+      {NAV.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            "transition hover:text-[var(--color-steel)]",
+            isActive(item.href) && "text-[var(--color-steel)]",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a
+      href="/contact/"
+      class="hidden shrink-0 rounded-md bg-[var(--color-steel)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)] lg:inline-block"
+    >
+      Request a Quote
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="rounded-md border border-[var(--color-line)] px-3 py-2 text-sm font-medium lg:hidden"
+    >
+      Menu
+    </button>
+  </div>
+
+  <div id="mobile-menu" hidden class="border-t border-[var(--color-line)] bg-white px-4 py-4 lg:hidden">
+    <nav class="flex flex-col gap-3 text-sm font-medium text-slate-700">
+      {NAV.map((item) => (
+        <a href={item.href} class="hover:text-[var(--color-steel)]">{item.label}</a>
+      ))}
+      <a
+        href="/contact/"
+        class="mt-2 rounded-md bg-[var(--color-steel)] px-4 py-2 text-center font-semibold text-white"
+      >
+        Request a Quote
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    const isHidden = menu?.hasAttribute("hidden");
+    if (isHidden) {
+      menu?.removeAttribute("hidden");
+      btn.setAttribute("aria-expanded", "true");
+    } else {
+      menu?.setAttribute("hidden", "");
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>

@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBanner from "../../components/CtaBanner.astro";
+
+const steps = [
+  "DFM review",
+  "Tooling (soft / aluminum / steel)",
+  "Prototyping",
+  "Pilot run",
+  "Injection molding & metal fabrication",
+  "Sub-assembly",
+  "Box-build assembly",
+  "Functional testing & inspection",
+  "Packaging (incl. cleanroom)",
+  "Shipment",
+];
+
+const pages = [
+  { href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs." },
+  { href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding." },
+  { href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components." },
+  { href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection, retail-ready packaging." },
+];
+---
+
+<Layout
+  title="Manufacturing"
+  description="From DFM review to a packed, inspected product — molding, metal fabrication, assembly, testing, inspection and packaging under one roof."
+>
+  <PageHero
+    eyebrow="Manufacturing"
+    title="From tooling to a packed, inspected product"
+    lede="Because molding, metal fabrication and assembly all happen inside our own facilities, there is no finger-pointing between suppliers when something needs to change."
+  />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h2 class="text-xl font-semibold text-[var(--color-navy)]">The process</h2>
+    <ol class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {steps.map((step, i) => (
+        <li class="flex items-start gap-3 rounded-lg border border-[var(--color-line)] bg-white p-4">
+          <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-navy)] text-xs font-bold text-white">
+            {i + 1}
+          </span>
+          <span class="text-sm leading-snug text-slate-700">{step}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-xl font-semibold text-[var(--color-navy)]">Explore each stage</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {pages.map((p) => (
+          <a href={p.href} class="group rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6 transition hover:border-[var(--color-steel)]">
+            <h3 class="text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{p.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{p.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

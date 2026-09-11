@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+---
+
+<Layout
+  title="About & Compliance"
+  description="Lihengda operates two manufacturing bases: Ningbo Lihengda Machinery Co., Ltd. in Ningbo, China (est. 2009) and Lihengda (Vietnam) International Co., Ltd. in Ho Chi Minh City (est. 2025)."
+>
+  <PageHero eyebrow="About" title="About Lihengda" />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="prose-body lg:col-span-2">
+        <p>
+          Lihengda operates two manufacturing bases. Ningbo Lihengda
+          Machinery Co., Ltd. was established in Ningbo, China in 2009. In
+          June 2025 we opened Lihengda (Vietnam) International Co., Ltd. in
+          Ho Chi Minh City to give customers a manufacturing option outside
+          China. The Vietnam company is a subsidiary of the Ningbo company.
+        </p>
+
+        <h2 class="text-lg font-semibold text-[var(--color-navy)]">Compliance</h2>
+        <ul>
+          <li>Both facilities have completed amfori BSCI monitoring. Monitoring information is available for review on request.</li>
+          <li>Our Ningbo facility is ISO 9001, ISO 14001 and ISO 45001 certified.</li>
+        </ul>
+
+        <h2 class="text-lg font-semibold text-[var(--color-navy)]">Locations</h2>
+        <p><strong>Vietnam:</strong> Plot No. 41, Map Sheet No. 6, Ba Tri Quarter, Tan Hiep Ward, Ho Chi Minh City, Vietnam.</p>
+        <p><strong>China:</strong> Ningbo, China.</p>
+      </div>
+
+      <aside class="rounded-lg border border-[var(--color-line)] bg-white p-6">
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">Contact</h3>
+        <p class="mt-3 text-sm font-medium text-[var(--color-navy)]">Lyman Li</p>
+        <p class="text-sm text-slate-600">Manager</p>
+        <a href="mailto:lyman@lihengdaglobal.com" class="mt-2 inline-block text-sm font-semibold text-[var(--color-steel)] hover:underline">
+          lyman@lihengdaglobal.com
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

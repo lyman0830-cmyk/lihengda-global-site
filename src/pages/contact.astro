@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const countries = ["United States", "Canada", "United Kingdom", "Germany", "Netherlands", "Other"];
+const categories = ["Kitchen", "Home & living", "Pet", "Personal care", "Bath", "Storage", "Cleaning", "Woodworking", "Other"];
+const stages = ["Idea", "Prototype", "Crowdfunding campaign", "Already in production", "Rebalancing supply chain"];
+const volumes = ["< 5,000 / yr", "5,000–50,000 / yr", "50,000–200,000 / yr", "200,000–1,000,000 / yr", "> 1,000,000 / yr", "Not sure"];
+const processes = ["Injection molding", "Sheet metal", "CNC", "Welding", "Assembly", "Packaging", "Not sure"];
+const timelines = ["< 1 month", "1–3 months", "3–6 months", "> 6 months"];
+---
+
+<Layout
+  title="Request a Quote"
+  description="Tell us about your product, volume and timeline. We'll get back to you within 2 business days — no auto-generated quotes."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Request a Quote"
+    lede="Tell us about your product. We'll get back to you within 2 business days — a real reply, not an automated quote."
+  />
+
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <!--
+      TODO before launch: replace YOUR_WEB3FORMS_ACCESS_KEY below with a real
+      key from https://web3forms.com (free). Test the form once end-to-end,
+      then delete the test submission from your inbox.
+    -->
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      enctype="multipart/form-data"
+      class="space-y-8"
+    >
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+      <input type="hidden" name="subject" value="New RFQ from lihengdaglobal.com" />
+      <input type="hidden" name="from_name" value="Lihengda Global — Request a Quote" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="name" class="text-sm font-medium text-slate-700">Name *</label>
+          <input id="name" name="name" type="text" required class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none" />
+        </div>
+        <div>
+          <label for="company" class="text-sm font-medium text-slate-700">Company *</label>
+          <input id="company" name="company" type="text" required class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none" />
+        </div>
+        <div>
+          <label for="website" class="text-sm font-medium text-slate-700">Company website *</label>
+          <input id="website" name="website" type="url" required placeholder="https://" class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none" />
+        </div>
+        <div>
+          <label for="email" class="text-sm font-medium text-slate-700">Email *</label>
+          <input id="email" name="email" type="email" required class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none" />
+        </div>
+        <div>
+          <label for="country" class="text-sm font-medium text-slate-700">Country *</label>
+          <select id="country" name="country" required class="mt-1 w-full rounded-md border border-[var(--color-line)] bg-white px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none">
+            <option value="">Select…</option>
+            {countries.map((c) => <option value={c}>{c}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="category" class="text-sm font-medium text-slate-700">Product category</label>
+          <select id="category" name="product_category" class="mt-1 w-full rounded-md border border-[var(--color-line)] bg-white px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none">
+            <option value="">Select…</option>
+            {categories.map((c) => <option value={c}>{c}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="stage" class="text-sm font-medium text-slate-700">Project stage</label>
+          <select id="stage" name="project_stage" class="mt-1 w-full rounded-md border border-[var(--color-line)] bg-white px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none">
+            <option value="">Select…</option>
+            {stages.map((s) => <option value={s}>{s}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="volume" class="text-sm font-medium text-slate-700">Target annual volume</label>
+          <select id="volume" name="target_annual_volume" class="mt-1 w-full rounded-md border border-[var(--color-line)] bg-white px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none">
+            <option value="">Select…</option>
+            {volumes.map((v) => <option value={v}>{v}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="price" class="text-sm font-medium text-slate-700">Target unit price (USD)</label>
+          <input id="price" name="target_unit_price_usd" type="text" placeholder="e.g. 3.50" class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none" />
+        </div>
+        <div>
+          <label for="timeline" class="text-sm font-medium text-slate-700">Timeline</label>
+          <select id="timeline" name="timeline" class="mt-1 w-full rounded-md border border-[var(--color-line)] bg-white px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none">
+            <option value="">Select…</option>
+            {timelines.map((t) => <option value={t}>{t}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend class="text-sm font-medium text-slate-700">Processes needed</legend>
+        <div class="mt-2 grid gap-2 sm:grid-cols-3">
+          {processes.map((p) => (
+            <label class="flex items-center gap-2 text-sm text-slate-700">
+              <input type="checkbox" name="processes_needed" value={p} class="h-4 w-4 rounded border-[var(--color-line)] text-[var(--color-steel)]" />
+              {p}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="text-sm font-medium text-slate-700">Preferred base</legend>
+        <div class="mt-2 flex flex-wrap gap-4">
+          {["China", "Vietnam", "Not sure — help me choose"].map((b, i) => (
+            <label class="flex items-center gap-2 text-sm text-slate-700">
+              <input type="radio" name="preferred_base" value={b} checked={i === 2} class="h-4 w-4 border-[var(--color-line)] text-[var(--color-steel)]" />
+              {b}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="message" class="text-sm font-medium text-slate-700">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us about your product — what it is, why you're reaching out now." class="mt-1 w-full rounded-md border border-[var(--color-line)] px-3 py-2 text-sm focus:border-[var(--color-steel)] focus:outline-none"></textarea>
+      </div>
+
+      <div>
+        <label for="attachment" class="text-sm font-medium text-slate-700">Attachment (optional, ≤10MB)</label>
+        <input id="attachment" name="attachment" type="file" class="mt-1 w-full text-sm text-slate-600 file:mr-4 file:rounded-md file:border-0 file:bg-[var(--color-bg)] file:px-3 file:py-2 file:text-sm file:font-medium" />
+      </div>
+
+      <label class="flex items-start gap-3 text-sm text-slate-600">
+        <input type="checkbox" name="consent" required class="mt-1 h-4 w-4 rounded border-[var(--color-line)] text-[var(--color-steel)]" />
+        I agree to be contacted about this enquiry. *
+      </label>
+
+      <p class="text-xs leading-relaxed text-slate-500">
+        Your information is used only to respond to this enquiry. We do not
+        sell it or share it with third parties.
+      </p>
+
+      <button
+        type="submit"
+        class="rounded-md bg-[var(--color-steel)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)]"
+      >
+        Submit Request
+      </button>
+    </form>
+  </section>
+</Layout>
