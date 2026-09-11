@@ -1,6 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import SectionPhoto from "../components/SectionPhoto.astro";
+import injectionMoldingPhoto from "../assets/photos/injection-molding-machines.jpg";
+import assemblyWorkerPhoto from "../assets/photos/assembly-line-worker.jpg";
 
 const proofPoints = [
   {
@@ -18,10 +22,17 @@ const proofPoints = [
 ];
 
 const processCards = [
-  { href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs." },
-  { href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding." },
-  { href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components alongside our molding lines." },
-  { href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection and retail-ready packaging." },
+  { n: "01", href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs." },
+  { n: "02", href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding." },
+  { n: "03", href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components alongside our molding lines." },
+  { n: "04", href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection and retail-ready packaging." },
+];
+
+const stats = [
+  { value: "2", label: "Manufacturing bases" },
+  { value: "2009", label: "Ningbo, China — established" },
+  { value: "2025", label: "Ho Chi Minh City, Vietnam — established" },
+  { value: "1", label: "Point of contact" },
 ];
 ---
 
@@ -29,15 +40,27 @@ const processCards = [
   title="Home"
   description="Lihengda runs two manufacturing bases — Ningbo, China and Ho Chi Minh City, Vietnam. Plastic and metal consumer products built complete: molding, metal fabrication, assembly, inspection and retail-ready packaging."
 >
-  <section class="border-b border-[var(--color-line)] bg-white">
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">
+  <!-- Hero -->
+  <section class="relative h-[72vh] min-h-[520px] max-h-[760px] w-full overflow-hidden bg-[var(--color-navy)]">
+    <Image
+      src={injectionMoldingPhoto}
+      alt="Injection molding machines running on our production floor"
+      widths={[640, 1024, 1600, 2200]}
+      sizes="100vw"
+      loading="eager"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)] via-[var(--color-navy)]/70 to-black/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent"></div>
+
+    <div class="relative mx-auto flex h-full max-w-6xl flex-col justify-center px-4 sm:px-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
         Two manufacturing bases. One point of contact.
       </p>
-      <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-[var(--color-navy)] sm:text-5xl md:text-6xl">
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
         Plastic and metal products, built complete — in China or Vietnam.
       </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
         Lihengda runs two manufacturing bases — Ningbo, China (since 2009) and
         Ho Chi Minh City, Vietnam (since 2025). We take plastic and metal
         consumer products from tooling through assembly, inspection and
@@ -46,13 +69,13 @@ const processCards = [
       <div class="mt-8 flex flex-wrap gap-3">
         <a
           href="/contact/"
-          class="rounded-md bg-[var(--color-steel)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)]"
+          class="rounded-md bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:brightness-95"
         >
           Request a Quote
         </a>
         <a
           href="/china-vietnam/"
-          class="rounded-md border border-[var(--color-line)] px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-steel)] hover:text-[var(--color-steel)]"
+          class="rounded-md border border-white/30 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/15"
         >
           Compare China &amp; Vietnam
         </a>
@@ -60,6 +83,19 @@ const processCards = [
     </div>
   </section>
 
+  <!-- Stats band -->
+  <section class="border-b border-[var(--color-line)] bg-white">
+    <div class="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-10 sm:px-6 md:grid-cols-4">
+      {stats.map((s) => (
+        <div>
+          <div class="text-3xl font-bold text-[var(--color-navy)] sm:text-4xl">{s.value}</div>
+          <div class="mt-1 text-sm text-slate-500">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Proof points -->
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <div class="grid gap-8 md:grid-cols-3">
       {proofPoints.map((p) => (
@@ -71,7 +107,8 @@ const processCards = [
     </div>
   </section>
 
-  <section class="bg-white py-16">
+  <!-- Process cards -->
+  <section class="bg-white pb-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="flex items-end justify-between gap-4">
         <h2 class="text-2xl font-bold text-[var(--color-navy)]">What we build in-house</h2>
@@ -81,14 +118,27 @@ const processCards = [
       </div>
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         {processCards.map((c) => (
-          <a href={c.href} class="group rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6 transition hover:border-[var(--color-steel)]">
-            <h3 class="text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{c.title}</h3>
+          <a
+            href={c.href}
+            class="group flex flex-col rounded-lg border border-[var(--color-line)] bg-[var(--color-bg)] p-6 transition hover:border-[var(--color-steel)] hover:shadow-sm"
+          >
+            <span class="text-xs font-bold tracking-widest text-[var(--color-steel)]">{c.n}</span>
+            <h3 class="mt-3 text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{c.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
+            <span class="mt-4 text-sm font-semibold text-[var(--color-steel)]">Learn more &rarr;</span>
           </a>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- Photo break -->
+  <SectionPhoto
+    src={assemblyWorkerPhoto}
+    alt="A Lihengda team member assembling a component on the production line"
+    eyebrow="Founder-run. Direct."
+    heading="You talk to the people who actually run the factory."
+  />
 
   <CtaBanner />
 </Layout>

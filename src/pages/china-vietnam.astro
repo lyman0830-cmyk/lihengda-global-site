@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import ningboPhoto from "../assets/photos/ningbo-facility-entrance.jpg";
 
 const rows: [string, string, string][] = [
   ["Since", "2009", "2025"],
@@ -34,6 +36,39 @@ const rows: [string, string, string][] = [
     title="Two manufacturing bases. One point of contact."
     lede="Not sure which base fits? Tell us your target market, tariff situation and volume, and we will recommend one — or split the program across both."
   />
+
+  <section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="relative flex h-80 flex-col justify-end overflow-hidden rounded-xl border border-[var(--color-line)]">
+        <Image
+          src={ningboPhoto}
+          alt="Entrance to our Ningbo, China facility"
+          widths={[480, 768, 1100]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="relative p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-white/70">Parent company · Since 2009</p>
+          <h2 class="mt-1 text-2xl font-bold text-white">Ningbo, China</h2>
+          <p class="mt-2 max-w-sm text-sm text-slate-200">
+            Mature supply chain, cost efficiency, established tooling, in-house metrology and reliability testing.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative flex h-80 flex-col justify-end overflow-hidden rounded-xl border border-[var(--color-line)] bg-gradient-to-br from-[var(--color-navy-2)] to-[var(--color-steel)]">
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, white 1px, transparent 1px); background-size: 22px 22px;"></div>
+        <div class="relative p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-white/70">Subsidiary · Since 2025</p>
+          <h2 class="mt-1 text-2xl font-bold text-white">Ho Chi Minh City, Vietnam</h2>
+          <p class="mt-2 max-w-sm text-sm text-slate-200">
+            Country-of-origin outside China, tariff exposure management, China+1 supply chain, sheet metal (laser cutting, laser tube cutting).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <div class="overflow-x-auto rounded-lg border border-[var(--color-line)] bg-white">

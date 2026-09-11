@@ -9,16 +9,18 @@ interface Props {
 const { src, alt, caption } = Astro.props;
 ---
 
-<section class="bg-white">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <Image
-      src={src}
-      alt={alt}
-      widths={[640, 1024, 1600, 2200]}
-      sizes="(min-width: 1152px) 1152px, 100vw"
-      class="w-full rounded-lg border border-[var(--color-line)] object-cover"
-      loading="eager"
-    />
-    {caption && <p class="mt-2 text-xs text-slate-500">{caption}</p>}
-  </div>
+<section class="relative h-[46vh] min-h-[320px] max-h-[520px] w-full overflow-hidden bg-[var(--color-navy)]">
+  <Image
+    src={src}
+    alt={alt}
+    widths={[640, 1024, 1600, 2200]}
+    sizes="100vw"
+    class="h-full w-full object-cover"
+    loading="eager"
+  />
+  {caption && (
+    <p class="absolute bottom-0 right-0 bg-black/50 px-3 py-1.5 text-xs text-white/90">
+      {caption}
+    </p>
+  )}
 </section>
