@@ -6,6 +6,7 @@ import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import officePhoto from "../assets/photos/ningbo-office-corridor.jpg";
 import entrancePhoto from "../assets/photos/ningbo-facility-entrance.jpg";
+import teamPhoto from "../assets/photos/video-office-team.jpg";
 ---
 
 <Layout
@@ -31,13 +32,22 @@ import entrancePhoto from "../assets/photos/ningbo-facility-entrance.jpg";
           China. The Vietnam company is a subsidiary of the Ningbo company.
         </p>
 
-        <Image
-          src={entrancePhoto}
-          alt="The entrance to our Ningbo facility"
-          widths={[400, 640, 900]}
-          sizes="(min-width: 1024px) 700px, 100vw"
-          class="w-full rounded-lg border border-[var(--color-line)] object-cover"
-        />
+        <div class="grid gap-4 sm:grid-cols-2">
+          <Image
+            src={entrancePhoto}
+            alt="The entrance to our Ningbo facility"
+            widths={[400, 640, 900]}
+            sizes="(min-width: 1024px) 350px, 100vw"
+            class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+          />
+          <Image
+            src={teamPhoto}
+            alt="Our team at work in the Ningbo office"
+            widths={[400, 640, 900]}
+            sizes="(min-width: 1024px) 350px, 100vw"
+            class="w-full rounded-lg border border-[var(--color-line)] object-cover"
+          />
+        </div>
 
         <h2 class="text-lg font-semibold text-[var(--color-navy)]">Compliance</h2>
         <ul>

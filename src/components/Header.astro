@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { NAV } from "../lib/nav";
+import logo from "../assets/brand/lihengda-logo.png";
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
@@ -9,11 +11,11 @@ const isActive = (href: string) =>
 <header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-white/95 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
     <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight text-[var(--color-navy)]">
-      <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-[var(--color-navy)] text-sm font-black text-white">L</span>
+      <Image src={logo} alt="Lihengda" class="h-7 w-auto" />
       Lihengda Global
     </a>
 
-    <nav class="hidden items-center gap-5 whitespace-nowrap text-sm font-medium text-slate-700 lg:flex">
+    <nav class="hidden items-center gap-5 whitespace-nowrap text-sm font-medium text-slate-700 xl:flex">
       {NAV.map((item) => (
         <a
           href={item.href}
@@ -29,7 +31,7 @@ const isActive = (href: string) =>
 
     <a
       href="/contact/"
-      class="hidden shrink-0 rounded-md bg-[var(--color-steel)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)] lg:inline-block"
+      class="hidden shrink-0 rounded-md bg-[var(--color-steel)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)] xl:inline-block"
     >
       Request a Quote
     </a>
@@ -39,13 +41,13 @@ const isActive = (href: string) =>
       type="button"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      class="rounded-md border border-[var(--color-line)] px-3 py-2 text-sm font-medium lg:hidden"
+      class="rounded-md border border-[var(--color-line)] px-3 py-2 text-sm font-medium xl:hidden"
     >
       Menu
     </button>
   </div>
 
-  <div id="mobile-menu" hidden class="border-t border-[var(--color-line)] bg-white px-4 py-4 lg:hidden">
+  <div id="mobile-menu" hidden class="border-t border-[var(--color-line)] bg-white px-4 py-4 xl:hidden">
     <nav class="flex flex-col gap-3 text-sm font-medium text-slate-700">
       {NAV.map((item) => (
         <a href={item.href} class="hover:text-[var(--color-steel)]">{item.label}</a>

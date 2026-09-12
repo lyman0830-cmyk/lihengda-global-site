@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import assemblyPhoto from "../assets/photos/video-assembly-line.jpg";
 
 const categories = [
   { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components." },
@@ -21,6 +23,12 @@ const categories = [
     eyebrow="Industries"
     title="Products we build"
     lede="We're strongest on products that combine a molded plastic part with a metal component — and need assembly, inspection and packaging to finish the job."
+  />
+
+  <PhotoBand
+    src={assemblyPhoto}
+    alt="Cleanroom assembly and packaging line"
+    caption="Assembly and packaging."
   />
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">

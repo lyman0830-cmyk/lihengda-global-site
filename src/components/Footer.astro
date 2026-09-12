@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../assets/brand/lihengda-logo.png";
 const year = new Date().getFullYear();
 ---
 
@@ -6,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
     <div class="md:col-span-2">
       <div class="flex items-center gap-2 text-lg font-bold text-white">
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded bg-white text-sm font-black text-[var(--color-navy)]">L</span>
+        <Image src={logo} alt="Lihengda" class="h-8 w-auto brightness-0 invert" />
         Lihengda Global
       </div>
       <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
@@ -17,13 +19,13 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <div class="text-sm font-semibold text-white">Manufacturing</div>
+      <div class="text-sm font-semibold text-white">Engineering &amp; Manufacturing</div>
       <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a class="hover:text-white" href="/manufacturing/#engineering">Engineering &amp; Development</a></li>
         <li><a class="hover:text-white" href="/manufacturing/injection-molding/">Injection Molding</a></li>
         <li><a class="hover:text-white" href="/manufacturing/sheet-metal-welding/">Sheet Metal &amp; Welding</a></li>
         <li><a class="hover:text-white" href="/manufacturing/cnc-machining/">CNC Machining</a></li>
         <li><a class="hover:text-white" href="/manufacturing/box-build-assembly/">Box-Build Assembly, Inspection &amp; Packaging</a></li>
-        <li><a class="hover:text-white" href="/engineering/">Engineering &amp; Development</a></li>
       </ul>
     </div>
 

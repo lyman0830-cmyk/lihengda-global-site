@@ -21,6 +21,13 @@ body {
   color: var(--color-ink);
 }
 
+.industrial-grid {
+  background-image:
+    linear-gradient(rgba(220, 138, 46, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 138, 46, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
 .prose-body :where(p) {
   margin-bottom: 1em;
   line-height: 1.75;
