@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import pilotRunPhoto from "../assets/photos/vietnam-injection-molding.jpg";
 
 const steps = [
   { title: "DFM review", body: "We look at your CAD and flag tooling, tolerance and assembly risks before you spend on molds." },
@@ -19,6 +21,12 @@ const steps = [
     eyebrow="Crowdfunding to Production"
     title="You funded it. Now build it — properly."
     lede="If your Kickstarter or Indiegogo campaign delivered and you now need real production, you need more than a prototype shop. You need tooling, molding, metal work, assembly, inspection and packaging in one place — and honest lead times."
+  />
+
+  <PhotoBand
+    src={pilotRunPhoto}
+    alt="Pilot-run injection molding, Vietnam facility"
+    caption="Pilot-run tooling, Vietnam facility."
   />
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">

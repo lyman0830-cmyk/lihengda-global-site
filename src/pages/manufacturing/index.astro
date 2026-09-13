@@ -2,9 +2,15 @@
 import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
+import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import qualityLabPhoto from "../../assets/photos/video-quality-lab.jpg";
 import robotArmPhoto from "../../assets/photos/video-robot-arm.jpg";
+import weldingHeroPhoto from "../../assets/photos/vietnam-robotic-welding.jpg";
+import injectionThumb from "../../assets/photos/injection-molding-machines.jpg";
+import sheetMetalThumb from "../../assets/photos/tube-bending-ningbo.jpg";
+import cncThumb from "../../assets/photos/cnc-machines.jpg";
+import assemblyThumb from "../../assets/photos/assembly-line-worker.jpg";
 
 const steps = [
   "DFM review",
@@ -27,10 +33,10 @@ const services = [
 ];
 
 const pages = [
-  { href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs." },
-  { href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding." },
-  { href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components." },
-  { href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection, retail-ready packaging." },
+  { href: "/manufacturing/injection-molding/", title: "Injection Molding", body: "Insert molding, overmolding, soft and aluminum tooling for low-volume runs.", img: injectionThumb },
+  { href: "/manufacturing/sheet-metal-welding/", title: "Sheet Metal & Welding", body: "Laser cutting, laser tube cutting, bending, robotic and TIG welding.", img: sheetMetalThumb },
+  { href: "/manufacturing/cnc-machining/", title: "CNC Machining", body: "Metal parts, fixtures and low-volume components.", img: cncThumb },
+  { href: "/manufacturing/box-build-assembly/", title: "Box-Build Assembly, Inspection & Packaging", body: "Final assembly, functional testing, inspection, retail-ready packaging.", img: assemblyThumb },
 ];
 ---
 
@@ -48,6 +54,12 @@ const pages = [
       <span>engineers, working in SolidWorks and UG (NX)</span>
     </div>
   </PageHero>
+
+  <PhotoBand
+    src={weldingHeroPhoto}
+    alt="Robotic welding arm working on an aluminum frame, Vietnam facility"
+    caption="Robotic welding, Vietnam facility."
+  />
 
   <section class="industrial-grid border-b border-[var(--color-line)] bg-[var(--color-bg)]">
     <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -170,9 +182,18 @@ const pages = [
       <h2 class="mt-2 text-xl font-semibold text-[var(--color-navy)]">Explore each manufacturing process</h2>
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         {pages.map((p, i) => (
-          <a href={p.href} class:list={["group rounded-lg border-l-4 bg-[var(--color-bg)] p-6 transition hover:-translate-y-0.5 hover:shadow-sm", i % 2 === 0 ? "border-[var(--color-accent)]" : "border-[var(--color-steel)]"]}>
-            <h3 class="text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{p.title}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-slate-600">{p.body}</p>
+          <a href={p.href} class:list={["group overflow-hidden rounded-lg border-l-4 bg-[var(--color-bg)] transition hover:-translate-y-0.5 hover:shadow-sm", i % 2 === 0 ? "border-[var(--color-accent)]" : "border-[var(--color-steel)]"]}>
+            <Image
+              src={p.img}
+              alt={p.title}
+              widths={[400, 640, 900]}
+              sizes="(min-width: 640px) 420px, 100vw"
+              class="h-40 w-full object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-base font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-steel)]">{p.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">{p.body}</p>
+            </div>
           </a>
         ))}
       </div>
