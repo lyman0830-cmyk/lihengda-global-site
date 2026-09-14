@@ -6,7 +6,8 @@ import PhotoBand from "../../components/PhotoBand.astro";
 import CtaBanner from "../../components/CtaBanner.astro";
 import qualityLabPhoto from "../../assets/photos/video-quality-lab.jpg";
 import robotArmPhoto from "../../assets/photos/video-robot-arm.jpg";
-import weldingHeroPhoto from "../../assets/photos/vietnam-robotic-welding.jpg";
+import heroPhoto from "../../assets/photos/assembly-line-wide.jpg";
+import weldingPhoto from "../../assets/photos/vietnam-robotic-welding.jpg";
 import injectionThumb from "../../assets/photos/injection-molding-machines.jpg";
 import sheetMetalThumb from "../../assets/photos/tube-bending-ningbo.jpg";
 import cncThumb from "../../assets/photos/cnc-machines.jpg";
@@ -56,9 +57,9 @@ const pages = [
   </PageHero>
 
   <PhotoBand
-    src={weldingHeroPhoto}
-    alt="Robotic welding arm working on an aluminum frame, Vietnam facility"
-    caption="Robotic welding, Vietnam facility."
+    src={heroPhoto}
+    alt="Assembly line with team members at work, Ningbo facility"
+    caption="Assembly line, Ningbo facility."
   />
 
   <section class="industrial-grid border-b border-[var(--color-line)] bg-[var(--color-bg)]">
@@ -170,6 +171,36 @@ const pages = [
             thickness and adding a cored channel keeps the same outer
             geometry the customer specified, with even cooling and no sink
             mark — caught in review, before steel was cut.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-bg)] py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+        <figure class="relative order-2 h-80 overflow-hidden rounded-xl border border-[var(--color-line)] sm:h-[28rem] lg:order-1">
+          <Image
+            src={weldingPhoto}
+            alt="Robotic welding arm working on an aluminum frame, Vietnam facility"
+            widths={[480, 768, 1100]}
+            sizes="(min-width: 1024px) 520px, 100vw"
+            class="h-full w-full object-cover"
+          />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-5 pb-3 pt-10 text-xs font-medium text-white">
+            Robotic welding, Vietnam facility
+          </figcaption>
+        </figure>
+        <div class="order-1 lg:order-2">
+          <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">Metal fabrication</p>
+          <h2 class="mt-2 max-w-lg text-2xl font-bold text-[var(--color-navy)] sm:text-3xl">
+            Robotic and TIG welding, run in-house
+          </h2>
+          <p class="mt-4 max-w-lg text-sm leading-relaxed text-slate-600">
+            Metal frames and enclosures are laser cut, bent and welded at our
+            Vietnam facility, then fed straight into assembly alongside the
+            molded parts — no handoff to a separate metal shop.
           </p>
         </div>
       </div>
