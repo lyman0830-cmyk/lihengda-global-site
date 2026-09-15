@@ -49,8 +49,9 @@ const rows: [string, Cell, Cell][] = [
   [
     "In-house processes",
     [
-      "CNC machining",
       "Injection molding (incl. insert molding, overmolding; no two-shot)",
+      "—",
+      "CNC machining",
       "Welding",
       "Tube bending",
       "Box-build assembly",
@@ -60,10 +61,11 @@ const rows: [string, Cell, Cell][] = [
     [
       "Injection molding (incl. insert molding, overmolding; no two-shot)",
       "Laser cutting, laser tube cutting",
-      "Bending",
-      "Robotic & TIG welding",
       "CNC machining",
-      "Assembly, functional testing, inspection",
+      "Robotic & TIG welding",
+      "Bending",
+      "Assembly",
+      "Functional testing, inspection",
       "Packaging (incl. cleanroom)",
     ],
   ],
@@ -191,7 +193,9 @@ const rows: [string, Cell, Cell][] = [
               <td class="px-5 py-4 leading-relaxed text-slate-700">
                 {Array.isArray(china) ? (
                   <ul class="list-disc space-y-1 pl-4">
-                    {china.map((item) => <li>{item}</li>)}
+                    {china.map((item) => (
+                      <li class:list={item === "—" && "list-none -ml-4 text-slate-400"}>{item}</li>
+                    ))}
                   </ul>
                 ) : (
                   china
