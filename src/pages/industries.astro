@@ -1,17 +1,24 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import assemblyPhoto from "../assets/photos/video-assembly-line.jpg";
+import kitchenThumb from "../assets/photos/assembly-line-worker.jpg";
+import homeThumb from "../assets/photos/cleanroom-assembly.jpg";
+import petThumb from "../assets/photos/cnc-machines.jpg";
+import personalCareThumb from "../assets/photos/video-quality-lab.jpg";
+import bathThumb from "../assets/photos/vietnam-cnc.jpg";
+import woodworkingThumb from "../assets/photos/tube-bending-ningbo.jpg";
 
 const categories = [
-  { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components." },
-  { title: "Home & living products", body: "Everyday products that need consistent fit, finish and assembly." },
-  { title: "Pet products", body: "Durable plastic and metal builds for daily use." },
-  { title: "Personal care & grooming tools", body: "Including plastic and zinc-alloy razors — a category we build today." },
-  { title: "Bath accessories, storage & cleaning tools", body: "Molded and metal components assembled and packed as a finished product." },
-  { title: "Woodworking tools", body: "Metal and plastic tool components built to spec." },
+  { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components.", img: kitchenThumb, alt: "Assembly line, Ningbo facility" },
+  { title: "Home & living products", body: "Everyday products that need consistent fit, finish and assembly.", img: homeThumb, alt: "Cleanroom assembly area, Ningbo facility" },
+  { title: "Pet products", body: "Durable plastic and metal builds for daily use.", img: petThumb, alt: "CNC machines, Ningbo facility" },
+  { title: "Personal care & grooming tools", body: "Including plastic and zinc-alloy razors — a category we build today.", img: personalCareThumb, alt: "Quality lab, Ningbo facility" },
+  { title: "Bath accessories, storage & cleaning tools", body: "Molded and metal components assembled and packed as a finished product.", img: bathThumb, alt: "CNC machining, Vietnam facility" },
+  { title: "Woodworking tools", body: "Metal and plastic tool components built to spec.", img: woodworkingThumb, alt: "Tube bending machine, Ningbo facility" },
 ];
 ---
 
@@ -34,9 +41,18 @@ const categories = [
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {categories.map((c) => (
-        <div class="rounded-lg border border-[var(--color-line)] bg-white p-6">
-          <h2 class="text-base font-semibold text-[var(--color-navy)]">{c.title}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
+        <div class="overflow-hidden rounded-lg border border-[var(--color-line)] bg-white">
+          <Image
+            src={c.img}
+            alt={c.alt}
+            widths={[320, 480, 640]}
+            sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
+            class="h-40 w-full object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-base font-semibold text-[var(--color-navy)]">{c.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
+          </div>
         </div>
       ))}
     </div>
