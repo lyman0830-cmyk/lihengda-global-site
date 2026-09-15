@@ -26,6 +26,12 @@ const steps = [
   "Shipment",
 ];
 
+const phaseGroups = [
+  { name: "Design & Tooling", start: 1, steps: steps.slice(0, 4) },
+  { name: "Production", start: 5, steps: steps.slice(4, 8) },
+  { name: "Delivery & QC", start: 9, steps: steps.slice(8, 10) },
+];
+
 const services = [
   { n: "01", title: "DFM Review", body: "Before tooling starts, we review your CAD for tooling risk, tolerance stack-up and assembly issues — and tell you what needs to change, not just what we can quote." },
   { n: "02", title: "Tooling Strategy", body: "Soft or aluminum tooling for low-volume and early production; steel tooling once you're ready to scale. We help you match the tooling investment to your actual volume." },
@@ -66,16 +72,56 @@ const pages = [
     <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">One continuous program</p>
       <h2 class="mt-2 text-xl font-semibold text-[var(--color-navy)]">The complete workflow</h2>
-      <ol class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        {steps.map((step, i) => (
-          <li class="flex items-start gap-3 rounded-lg border border-[var(--color-line)] bg-white p-4">
-            <span class:list={["flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold", i < 4 ? "bg-[var(--color-accent)] text-[var(--color-navy)]" : "bg-[var(--color-navy)] text-white"]}>
-              {i + 1}
-            </span>
-            <span class="text-sm leading-snug text-slate-700">{step}</span>
-          </li>
+      <div class="mt-8 grid gap-8 lg:grid-cols-3 lg:gap-6">
+        {phaseGroups.map((phase, pi) => (
+          <div class="relative">
+            <div
+              class:list={[
+                "h-full rounded-xl border-t-4 border-x border-b border-[var(--color-line)] bg-white p-5 shadow-sm",
+                pi === 0 && "border-t-[var(--color-accent)]",
+                pi === 1 && "border-t-[var(--color-steel)]",
+                pi === 2 && "border-t-[var(--color-navy)]",
+              ]}
+            >
+              <h3
+                class:list={[
+                  "text-xs font-bold uppercase tracking-wide",
+                  pi === 0 && "text-[var(--color-accent)]",
+                  pi === 1 && "text-[var(--color-steel)]",
+                  pi === 2 && "text-[var(--color-navy)]",
+                ]}
+              >
+                Phase {pi + 1} &middot; {phase.name}
+              </h3>
+              <ol class="mt-4 space-y-4">
+                {phase.steps.map((step, si) => (
+                  <li class="flex items-start gap-3">
+                    <span
+                      class:list={[
+                        "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white",
+                        pi === 0 && "bg-[var(--color-accent)]",
+                        pi === 1 && "bg-[var(--color-steel)]",
+                        pi === 2 && "bg-[var(--color-navy)]",
+                      ]}
+                    >
+                      {phase.start + si}
+                    </span>
+                    <span class="pt-0.5 text-sm leading-snug text-slate-700">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {pi < phaseGroups.length - 1 && (
+              <div class="pointer-events-none absolute -right-6 top-8 z-10 hidden h-8 w-8 items-center justify-center rounded-full border border-[var(--color-line)] bg-[var(--color-bg)] text-[var(--color-steel)] lg:flex">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            )}
+          </div>
         ))}
-      </ol>
+      </div>
     </div>
   </section>
 
