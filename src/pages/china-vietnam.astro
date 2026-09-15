@@ -36,24 +36,46 @@ const vietnamGallery = [
   { src: vietnamLobbyPhoto, alt: "Reception lobby, Vietnam facility" },
 ];
 
-const rows: [string, string, string][] = [
+type Cell = string | string[];
+
+const rows: [string, Cell, Cell][] = [
   ["Since", "2009", "2025"],
   ["Site", "~6,000 m²", "~7,707 m², 3 production buildings"],
-  ["Certifications", "amfori BSCI monitoring completed; ISO 9001, ISO 14001, ISO 45001", "amfori BSCI monitoring completed"],
+  [
+    "Certifications",
+    ["amfori BSCI monitoring completed", "ISO 9001, ISO 14001, ISO 45001"],
+    ["amfori BSCI monitoring completed"],
+  ],
   [
     "In-house processes",
-    "CNC machining, injection molding (incl. insert molding, overmolding; no two-shot), welding, tube bending, box-build assembly, functional testing, inspection, packaging (incl. cleanroom)",
-    "Injection molding (incl. insert molding, overmolding; no two-shot), laser cutting, laser tube cutting, bending, robotic & TIG welding, CNC machining, assembly, functional testing, inspection, packaging (incl. cleanroom)",
+    [
+      "CNC machining",
+      "Injection molding (incl. insert molding, overmolding; no two-shot)",
+      "Welding",
+      "Tube bending",
+      "Box-build assembly",
+      "Functional testing, inspection",
+      "Packaging (incl. cleanroom)",
+    ],
+    [
+      "Injection molding (incl. insert molding, overmolding; no two-shot)",
+      "Laser cutting, laser tube cutting",
+      "Bending",
+      "Robotic & TIG welding",
+      "CNC machining",
+      "Assembly, functional testing, inspection",
+      "Packaging (incl. cleanroom)",
+    ],
   ],
   [
     "QC lab",
-    "Salt spray tester, temperature chamber, colorimeter, CMM, profile projector, tensile tester, hardness tester, standard gauges",
-    "Profile projector, calipers, standard gauges. Additional inspection reports available on request.",
+    ["Salt spray tester", "Temperature chamber", "Colorimeter", "CMM", "Profile projector", "Tensile tester", "Hardness tester", "Standard gauges"],
+    ["Profile projector", "Calipers", "Standard gauges", "Additional inspection reports available on request"],
   ],
   [
     "Best when you need",
-    "mature supply chain, cost efficiency, established tooling, in-house metrology / reliability testing",
-    "country-of-origin outside China, tariff exposure management, China+1 supply chain, sheet metal (laser cutting, laser tube cutting)",
+    ["Mature supply chain, cost efficiency", "Established tooling", "In-house metrology / reliability testing"],
+    ["Country-of-origin outside China", "Tariff exposure management, China+1 supply chain", "Sheet metal (laser cutting, laser tube cutting)"],
   ],
   ["Relationship", "Parent company", "Subsidiary of the Ningbo company"],
 ];
@@ -166,8 +188,24 @@ const rows: [string, string, string][] = [
           {rows.map(([label, china, vietnam]) => (
             <tr class="border-b border-[var(--color-line)] align-top last:border-0">
               <th class="w-40 px-5 py-4 font-medium text-slate-500">{label}</th>
-              <td class="px-5 py-4 leading-relaxed text-slate-700">{china}</td>
-              <td class="px-5 py-4 leading-relaxed text-slate-700">{vietnam}</td>
+              <td class="px-5 py-4 leading-relaxed text-slate-700">
+                {Array.isArray(china) ? (
+                  <ul class="list-disc space-y-1 pl-4">
+                    {china.map((item) => <li>{item}</li>)}
+                  </ul>
+                ) : (
+                  china
+                )}
+              </td>
+              <td class="px-5 py-4 leading-relaxed text-slate-700">
+                {Array.isArray(vietnam) ? (
+                  <ul class="list-disc space-y-1 pl-4">
+                    {vietnam.map((item) => <li>{item}</li>)}
+                  </ul>
+                ) : (
+                  vietnam
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
