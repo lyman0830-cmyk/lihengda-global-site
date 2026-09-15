@@ -1,7 +1,7 @@
 export type NavItem = { href: string; label: string };
 
 export const NAV: NavItem[] = [
-  { href: "/manufacturing/", label: "Engineering & Manufacturing" },
+  { href: "/manufacturing/", label: "Manufacturing" },
   { href: "/china-vietnam/", label: "China & Vietnam" },
   { href: "/industries/", label: "Industries" },
   { href: "/crowdfunding-to-production/", label: "Crowdfunding" },
