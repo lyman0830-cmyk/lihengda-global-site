@@ -36,7 +36,7 @@ const moldLabels: { side: "left" | "right"; y: number; dotX: number; dotY: numbe
   { side: "right", y: 50, dotX: 430, dotY: 30, text: "SPRUE BUSHING" },
   { side: "right", y: 105, dotX: 570, dotY: 94, text: "COOLING CHANNEL" },
   { side: "right", y: 160, dotX: 620, dotY: 180, text: "GUIDE PIN" },
-  { side: "right", y: 218, dotX: 470, dotY: 215, text: "MOLDED PART" },
+  { side: "right", y: 218, dotX: 460, dotY: 215, text: "MOLDED PART" },
   { side: "right", y: 273, dotX: 430, dotY: 320, text: "EJECTOR PIN" },
   { side: "left", y: 65, dotX: 210, dotY: 70, text: "CAVITY — A SIDE" },
   { side: "left", y: 140, dotX: 425, dotY: 115, text: "GATE" },
@@ -248,10 +248,11 @@ const pages = [
             <rect x="617" y="128" width="6" height="120" fill="url(#toolSteelDark)" />
           </g>
 
-          <!-- The molded part, resting on the core, mid-ejection -->
+          <!-- The molded part, resting on the core, mid-ejection. Outer walls line up with the
+               cavity pocket above (x=400-460); the hollow matches the core boss (x=410-450). -->
           <g filter="url(#engShadow)">
             <path
-              d="M385,196 H475 V246 H460 V222 H400 V246 H385 Z"
+              d="M400,196 H460 V246 H450 V222 H410 V246 H400 Z"
               fill="url(#plasticAmber)"
               stroke="var(--color-accent-light)"
               stroke-width="1.25"
@@ -261,11 +262,11 @@ const pages = [
 
           <!-- Core block (B side / moving half), with a boss protruding into the part -->
           <g filter="url(#engShadow)">
-            <rect x="400" y="222" width="60" height="24" fill="url(#toolSteelDark)" stroke="#0f1720" stroke-width="0.75" />
+            <rect x="410" y="222" width="40" height="24" fill="url(#toolSteelDark)" stroke="#0f1720" stroke-width="0.75" />
             <rect x="140" y="246" width="520" height="100" fill="url(#toolSteelDark)" stroke="#0f1720" stroke-width="1" />
-            <rect x="410" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
+            <rect x="412" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
             <rect x="427" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
-            <rect x="444" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
+            <rect x="442" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
             <rect x="140" y="346" width="520" height="20" fill="#26313f" stroke="#0f1720" stroke-width="1" />
             <rect x="380" y="366" width="200" height="26" fill="#26313f" stroke="#0f1720" stroke-width="1" />
           </g>
