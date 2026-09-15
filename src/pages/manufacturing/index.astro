@@ -33,14 +33,15 @@ const phaseGroups = [
 ];
 
 const moldLabels: { side: "left" | "right"; y: number; dotX: number; dotY: number; text: string }[] = [
-  { side: "right", y: 55, dotX: 345, dotY: 60, text: "SPRUE BUSHING" },
-  { side: "right", y: 140, dotX: 570, dotY: 125, text: "COOLING CHANNEL" },
-  { side: "right", y: 183, dotX: 400, dotY: 183, text: "RUNNER" },
-  { side: "right", y: 226, dotX: 525, dotY: 190, text: "MOLDED PART" },
-  { side: "right", y: 269, dotX: 515, dotY: 260, text: "EJECTOR PIN" },
-  { side: "left", y: 97, dotX: 230, dotY: 125, text: "CAVITY (A SIDE)" },
-  { side: "left", y: 183, dotX: 462, dotY: 184, text: "GATE" },
-  { side: "left", y: 269, dotX: 230, dotY: 250, text: "CORE (B SIDE)" },
+  { side: "right", y: 50, dotX: 430, dotY: 30, text: "SPRUE BUSHING" },
+  { side: "right", y: 105, dotX: 570, dotY: 94, text: "COOLING CHANNEL" },
+  { side: "right", y: 160, dotX: 620, dotY: 180, text: "GUIDE PIN" },
+  { side: "right", y: 218, dotX: 470, dotY: 215, text: "MOLDED PART" },
+  { side: "right", y: 273, dotX: 430, dotY: 320, text: "EJECTOR PIN" },
+  { side: "left", y: 65, dotX: 210, dotY: 70, text: "CAVITY — A SIDE" },
+  { side: "left", y: 140, dotX: 425, dotY: 115, text: "GATE" },
+  { side: "left", y: 218, dotX: 210, dotY: 296, text: "CORE — B SIDE" },
+  { side: "left", y: 293, dotX: 150, dotY: 195, text: "PARTING LINE" },
 ];
 
 const services = [
@@ -180,12 +181,12 @@ const pages = [
     <svg width="0" height="0" class="absolute" aria-hidden="true">
       <defs>
         <linearGradient id="toolSteel" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#b6c0cc" />
-          <stop offset="100%" stop-color="#7e8b9a" />
+          <stop offset="0%" stop-color="#ccd4dd" />
+          <stop offset="100%" stop-color="#8b97a6" />
         </linearGradient>
         <linearGradient id="toolSteelDark" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#8b97a6" />
-          <stop offset="100%" stop-color="#59636f" />
+          <stop offset="0%" stop-color="#697382" />
+          <stop offset="100%" stop-color="#3c4552" />
         </linearGradient>
         <linearGradient id="plasticAmber" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#f3c98a" />
@@ -209,8 +210,10 @@ const pages = [
       <!-- Mold anatomy -->
       <div class="blueprint-grid mt-8 overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6">
         <h3 class="text-sm font-bold uppercase tracking-wide text-white">Anatomy of an injection mold</h3>
-        <svg viewBox="0 0 800 380" class="mt-4 w-full" role="img" aria-labelledby="mold-anatomy-title">
-          <title id="mold-anatomy-title">Cross-section of a two-plate injection mold, labeled with its main components</title>
+        <p class="mt-1 text-xs text-slate-400">Shown open, mid-cycle — the moment the part is about to be ejected.</p>
+
+        <svg viewBox="0 0 800 430" class="mt-4 w-full" role="img" aria-labelledby="mold-anatomy-title">
+          <title id="mold-anatomy-title">Cross-section of an open two-plate injection mold, labeled with its main components</title>
 
           {moldLabels.map((l) => (
             <line
@@ -218,46 +221,75 @@ const pages = [
               y1={l.dotY}
               x2={l.side === "right" ? 690 : 110}
               y2={l.y}
-              stroke="#4d5c70"
+              stroke="#5b6b80"
               stroke-width="1"
             />
           ))}
 
+          <!-- Cavity block (A side / fixed half), with a pocket machined into its underside -->
           <g filter="url(#engShadow)">
-            <rect x="140" y="40" width="520" height="24" fill="#2a3a4d" />
-            <rect x="140" y="64" width="520" height="126" fill="url(#toolSteel)" />
-            <rect x="140" y="190" width="520" height="110" fill="url(#toolSteelDark)" />
-            <rect x="400" y="314" width="200" height="26" fill="#2a3a4d" />
-            <rect x="140" y="340" width="520" height="24" fill="#2a3a4d" />
+            <rect x="140" y="20" width="520" height="24" fill="#26313f" stroke="#0f1720" stroke-width="1" />
+            <path
+              d="M140,44 H660 V144 H460 V120 H400 V144 H140 Z"
+              fill="url(#toolSteel)"
+              stroke="#0f1720"
+              stroke-width="1"
+            />
+            <polygon points="419,20 441,20 434,120 426,120" fill="url(#toolSteel)" stroke="#0f1720" stroke-width="0.75" />
+            <rect x="422" y="108" width="16" height="12" fill="var(--color-accent)" />
+          </g>
+          <text x="250" y="98" fill="#0f1720" fill-opacity="0.4" font-size="13" font-weight="800" letter-spacing="0.04em">CAVITY</text>
 
-            <polygon points="333,40 357,40 350,182 340,182" fill="url(#toolSteel)" />
-            <circle cx="345" cy="186" r="7" fill="url(#toolSteel)" />
-            <rect x="345" y="179" width="110" height="8" fill="url(#toolSteel)" />
-            <rect x="455" y="180" width="15" height="10" fill="var(--color-accent)" />
-            <rect x="470" y="165" width="60" height="50" rx="4" fill="url(#plasticAmber)" stroke="var(--color-accent-light)" stroke-width="1" />
-
-            <rect x="483" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
-            <rect x="498" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
-            <rect x="513" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
+          <!-- Guide pins bridging the open gap -->
+          <g filter="url(#engShadow)">
+            <circle cx="180" cy="108" r="9" fill="#0f1720" stroke="#0f1720" stroke-width="1" />
+            <circle cx="620" cy="108" r="9" fill="#0f1720" stroke="#0f1720" stroke-width="1" />
+            <rect x="177" y="128" width="6" height="120" fill="url(#toolSteelDark)" />
+            <rect x="617" y="128" width="6" height="120" fill="url(#toolSteelDark)" />
           </g>
 
-          <circle cx="230" cy="125" r="10" fill="none" stroke="#4d5c70" stroke-width="1.5" stroke-dasharray="2 2" />
-          <circle cx="570" cy="125" r="10" fill="none" stroke="#4d5c70" stroke-width="1.5" stroke-dasharray="2 2" />
-          <circle cx="230" cy="250" r="10" fill="none" stroke="#3a4553" stroke-width="1.5" stroke-dasharray="2 2" />
-          <circle cx="570" cy="250" r="10" fill="none" stroke="#3a4553" stroke-width="1.5" stroke-dasharray="2 2" />
+          <!-- The molded part, resting on the core, mid-ejection -->
+          <g filter="url(#engShadow)">
+            <path
+              d="M385,196 H475 V246 H460 V222 H400 V246 H385 Z"
+              fill="url(#plasticAmber)"
+              stroke="var(--color-accent-light)"
+              stroke-width="1.25"
+            />
+          </g>
+          <text x="430" y="212" fill="var(--color-navy)" font-size="9" font-weight="800" text-anchor="middle" letter-spacing="0.03em">PART</text>
 
-          <line x1="120" y1="190" x2="680" y2="190" stroke="var(--color-accent-light)" stroke-width="1.5" stroke-dasharray="7 4" opacity="0.6" />
+          <!-- Core block (B side / moving half), with a boss protruding into the part -->
+          <g filter="url(#engShadow)">
+            <rect x="400" y="222" width="60" height="24" fill="url(#toolSteelDark)" stroke="#0f1720" stroke-width="0.75" />
+            <rect x="140" y="246" width="520" height="100" fill="url(#toolSteelDark)" stroke="#0f1720" stroke-width="1" />
+            <rect x="410" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
+            <rect x="427" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
+            <rect x="444" y="246" width="6" height="108" fill="url(#toolSteelDark)" />
+            <rect x="140" y="346" width="520" height="20" fill="#26313f" stroke="#0f1720" stroke-width="1" />
+            <rect x="380" y="366" width="200" height="26" fill="#26313f" stroke="#0f1720" stroke-width="1" />
+          </g>
+          <text x="250" y="305" fill="#dfe4ea" fill-opacity="0.55" font-size="13" font-weight="800" letter-spacing="0.04em">CORE</text>
+
+          <circle cx="230" cy="94" r="9" fill="none" stroke="#5b6b80" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="570" cy="94" r="9" fill="none" stroke="#5b6b80" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="230" cy="296" r="9" fill="none" stroke="#8fa0b3" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="570" cy="296" r="9" fill="none" stroke="#8fa0b3" stroke-width="1.5" stroke-dasharray="2 2" />
+
+          <line x1="120" y1="195" x2="680" y2="195" stroke="var(--color-accent-light)" stroke-width="1.5" stroke-dasharray="7 4" opacity="0.55" />
+
+          <path d="M700,150 v90 M700,150 l-5,8 M700,150 l5,8 M700,240 l-5,-8 M700,240 l5,-8" fill="none" stroke="#8fa0b3" stroke-width="1.25" stroke-linecap="round" />
 
           {moldLabels.map((l) => (
-            <circle cx={l.dotX} cy={l.dotY} r="2.5" fill="var(--color-accent-light)" />
+            <circle cx={l.dotX} cy={l.dotY} r="3" fill="var(--color-accent-light)" stroke="#0f1720" stroke-width="0.75" />
           ))}
 
           {moldLabels.map((l) => (
             <text
               x={l.side === "right" ? 698 : 102}
               y={l.y + 3}
-              fill="#c3ccd6"
-              font-size="10"
+              fill="#e2e8f0"
+              font-size="10.5"
               font-weight="700"
               letter-spacing="0.02em"
               text-anchor={l.side === "right" ? "start" : "end"}
@@ -267,9 +299,10 @@ const pages = [
           ))}
         </svg>
         <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300">
-          A two-plate mold, in cross-section: melted plastic runs from the sprue bushing through
-          the runner and gate into the cavity, cools against the cavity (A side) and core (B side)
-          steel, then the ejector pins push the finished part free along the parting line.
+          A two-plate mold, shown open: melted plastic runs from the sprue bushing through the
+          gate into the cavity (A side), cools against the cavity and core (B side) steel, and
+          guide pins keep the two halves aligned every cycle. When the mold opens, ejector pins
+          push the finished part free of the core.
         </p>
       </div>
 
