@@ -28,6 +28,13 @@ body {
   background-size: 32px 32px;
 }
 
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
 .prose-body :where(p) {
   margin-bottom: 1em;
   line-height: 1.75;
