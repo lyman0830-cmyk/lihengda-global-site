@@ -5,6 +5,28 @@ import PageHero from "../components/PageHero.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import ningboPhoto from "../assets/photos/ningbo-facility-entrance.jpg";
 import vietnamPhoto from "../assets/photos/vietnam-facility-entrance.jpg";
+import ningboEngineeringPhoto from "../assets/photos/engineering-office.jpg";
+import ningboCleanroomPhoto from "../assets/photos/cleanroom-assembly.jpg";
+import ningboInjectionPhoto from "../assets/photos/injection-molding-machines.jpg";
+import ningboCncPhoto from "../assets/photos/cnc-machines.jpg";
+import vietnamWeldingPhoto from "../assets/photos/vietnam-robotic-welding.jpg";
+import vietnamLaserPhoto from "../assets/photos/vietnam-laser-cutting.jpg";
+import vietnamCncPhoto from "../assets/photos/vietnam-cnc.jpg";
+import vietnamInjectionPhoto from "../assets/photos/vietnam-injection-molding.jpg";
+
+const ningboGallery = [
+  { src: ningboInjectionPhoto, alt: "Injection molding machines, Ningbo facility" },
+  { src: ningboCncPhoto, alt: "CNC machines, Ningbo facility" },
+  { src: ningboCleanroomPhoto, alt: "Cleanroom assembly area, Ningbo facility" },
+  { src: ningboEngineeringPhoto, alt: "Engineering office, Ningbo facility" },
+];
+
+const vietnamGallery = [
+  { src: vietnamInjectionPhoto, alt: "Injection molding, Vietnam facility" },
+  { src: vietnamWeldingPhoto, alt: "Robotic welding arm, Vietnam facility" },
+  { src: vietnamLaserPhoto, alt: "Laser cutting machine, Vietnam facility" },
+  { src: vietnamCncPhoto, alt: "CNC machining, Vietnam facility" },
+];
 
 const rows: [string, string, string][] = [
   ["Since", "2009", "2025"],
@@ -79,6 +101,49 @@ const rows: [string, string, string][] = [
   </section>
 
   <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <h2 class="text-xl font-semibold text-[var(--color-navy)]">Inside our facilities</h2>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+      Real photos from both production floors — not renders.
+    </p>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-2">
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">Ningbo, China</h3>
+        <div class="mt-3 grid grid-cols-2 gap-3">
+          {ningboGallery.map((photo) => (
+            <div class="overflow-hidden rounded-lg border border-[var(--color-line)]">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                widths={[300, 480, 640]}
+                sizes="(min-width: 768px) 260px, 45vw"
+                class="h-40 w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-steel)]">Ho Chi Minh City, Vietnam</h3>
+        <div class="mt-3 grid grid-cols-2 gap-3">
+          {vietnamGallery.map((photo) => (
+            <div class="overflow-hidden rounded-lg border border-[var(--color-line)]">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                widths={[300, 480, 640]}
+                sizes="(min-width: 768px) 260px, 45vw"
+                class="h-40 w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
     <div class="overflow-x-auto rounded-lg border border-[var(--color-line)] bg-white">
       <table class="w-full min-w-[640px] border-collapse text-left text-sm">
         <thead>
