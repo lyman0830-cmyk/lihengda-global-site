@@ -32,6 +32,17 @@ const phaseGroups = [
   { name: "Delivery & QC", start: 9, steps: steps.slice(8, 10) },
 ];
 
+const moldLabels: { side: "left" | "right"; y: number; dotX: number; dotY: number; text: string }[] = [
+  { side: "right", y: 55, dotX: 345, dotY: 60, text: "SPRUE BUSHING" },
+  { side: "right", y: 140, dotX: 570, dotY: 125, text: "COOLING CHANNEL" },
+  { side: "right", y: 183, dotX: 400, dotY: 183, text: "RUNNER" },
+  { side: "right", y: 226, dotX: 525, dotY: 190, text: "MOLDED PART" },
+  { side: "right", y: 269, dotX: 515, dotY: 260, text: "EJECTOR PIN" },
+  { side: "left", y: 97, dotX: 230, dotY: 125, text: "CAVITY (A SIDE)" },
+  { side: "left", y: 183, dotX: 462, dotY: 184, text: "GATE" },
+  { side: "left", y: 269, dotX: 230, dotY: 250, text: "CORE (B SIDE)" },
+];
+
 const services = [
   { n: "01", title: "DFM Review", body: "Before tooling starts, we review your CAD for tooling risk, tolerance stack-up and assembly issues — and tell you what needs to change, not just what we can quote." },
   { n: "02", title: "Tooling Strategy", body: "Soft or aluminum tooling for low-volume and early production; steel tooling once you're ready to scale. We help you match the tooling investment to your actual volume." },
@@ -164,102 +175,199 @@ const pages = [
     </div>
   </section>
 
-  <!-- Illustrative DFM example -->
+  <!-- Engineering depth: mold anatomy + DFM examples -->
   <section class="bg-[var(--color-navy)] py-16">
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <defs>
+        <linearGradient id="toolSteel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#b6c0cc" />
+          <stop offset="100%" stop-color="#7e8b9a" />
+        </linearGradient>
+        <linearGradient id="toolSteelDark" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8b97a6" />
+          <stop offset="100%" stop-color="#59636f" />
+        </linearGradient>
+        <linearGradient id="plasticAmber" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f3c98a" />
+          <stop offset="100%" stop-color="#dc8a2e" />
+        </linearGradient>
+        <filter id="engShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35" />
+        </filter>
+      </defs>
+    </svg>
+
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent-light)]">A DFM review, in practice</p>
+      <p class="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent-light)]">Engineering, in practice</p>
       <h2 class="mt-2 max-w-2xl text-2xl font-bold text-white sm:text-3xl">
-        Catching a sink-mark risk before the mold gets cut
+        From mold design to a finished, inspected part
       </h2>
       <p class="mt-3 max-w-2xl text-sm text-slate-400">
-        Illustrative example — a generic part, not a client project.
+        Illustrative diagrams — generic geometry, not a client project.
       </p>
 
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <div class="blueprint-grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6">
-          <span class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[var(--color-accent-light)]">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5" /></svg>
-            Sink mark risk
-          </span>
+      <!-- Mold anatomy -->
+      <div class="blueprint-grid mt-8 overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6">
+        <h3 class="text-sm font-bold uppercase tracking-wide text-white">Anatomy of an injection mold</h3>
+        <svg viewBox="0 0 800 380" class="mt-4 w-full" role="img" aria-labelledby="mold-anatomy-title">
+          <title id="mold-anatomy-title">Cross-section of a two-plate injection mold, labeled with its main components</title>
 
-          <svg viewBox="0 0 360 200" class="mt-4 w-full" role="img" aria-labelledby="dfm-before-title">
-            <title id="dfm-before-title">Before: rib thickness close to wall thickness, causing a sink mark</title>
-            <defs>
-              <linearGradient id="partFillBefore" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#b6c0cc" />
-                <stop offset="100%" stop-color="#7e8b9a" />
-              </linearGradient>
-              <marker id="dimArrowBefore" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0,0 L10,5 L0,10 z" fill="#7c8ba0" />
-              </marker>
-              <filter id="softShadowBefore" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35" />
-              </filter>
-            </defs>
+          {moldLabels.map((l) => (
+            <line
+              x1={l.dotX}
+              y1={l.dotY}
+              x2={l.side === "right" ? 690 : 110}
+              y2={l.y}
+              stroke="#4d5c70"
+              stroke-width="1"
+            />
+          ))}
 
-            <g filter="url(#softShadowBefore)">
-              <rect x="20" y="36" width="320" height="22" rx="2" fill="url(#partFillBefore)" />
-              <rect x="160" y="58" width="40" height="86" rx="2" fill="url(#partFillBefore)" />
+          <g filter="url(#engShadow)">
+            <rect x="140" y="40" width="520" height="24" fill="#2a3a4d" />
+            <rect x="140" y="64" width="520" height="126" fill="url(#toolSteel)" />
+            <rect x="140" y="190" width="520" height="110" fill="url(#toolSteelDark)" />
+            <rect x="400" y="314" width="200" height="26" fill="#2a3a4d" />
+            <rect x="140" y="340" width="520" height="24" fill="#2a3a4d" />
+
+            <polygon points="333,40 357,40 350,182 340,182" fill="url(#toolSteel)" />
+            <circle cx="345" cy="186" r="7" fill="url(#toolSteel)" />
+            <rect x="345" y="179" width="110" height="8" fill="url(#toolSteel)" />
+            <rect x="455" y="180" width="15" height="10" fill="var(--color-accent)" />
+            <rect x="470" y="165" width="60" height="50" rx="4" fill="url(#plasticAmber)" stroke="var(--color-accent-light)" stroke-width="1" />
+
+            <rect x="483" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
+            <rect x="498" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
+            <rect x="513" y="215" width="5" height="99" fill="url(#toolSteelDark)" />
+          </g>
+
+          <circle cx="230" cy="125" r="10" fill="none" stroke="#4d5c70" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="570" cy="125" r="10" fill="none" stroke="#4d5c70" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="230" cy="250" r="10" fill="none" stroke="#3a4553" stroke-width="1.5" stroke-dasharray="2 2" />
+          <circle cx="570" cy="250" r="10" fill="none" stroke="#3a4553" stroke-width="1.5" stroke-dasharray="2 2" />
+
+          <line x1="120" y1="190" x2="680" y2="190" stroke="var(--color-accent-light)" stroke-width="1.5" stroke-dasharray="7 4" opacity="0.6" />
+
+          {moldLabels.map((l) => (
+            <circle cx={l.dotX} cy={l.dotY} r="2.5" fill="var(--color-accent-light)" />
+          ))}
+
+          {moldLabels.map((l) => (
+            <text
+              x={l.side === "right" ? 698 : 102}
+              y={l.y + 3}
+              fill="#c3ccd6"
+              font-size="10"
+              font-weight="700"
+              letter-spacing="0.02em"
+              text-anchor={l.side === "right" ? "start" : "end"}
+            >
+              {l.text}
+            </text>
+          ))}
+        </svg>
+        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-300">
+          A two-plate mold, in cross-section: melted plastic runs from the sprue bushing through
+          the runner and gate into the cavity, cools against the cavity (A side) and core (B side)
+          steel, then the ejector pins push the finished part free along the parting line.
+        </p>
+      </div>
+
+      <!-- DFM case studies -->
+      <h3 class="mt-12 text-sm font-bold uppercase tracking-wide text-white">DFM checks we run before steel is cut</h3>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <div class="blueprint-grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <h4 class="text-sm font-bold text-white">Sink marks</h4>
+          <p class="mt-1 text-xs text-slate-400">Rib-to-wall thickness ratio</p>
+
+          <svg viewBox="0 0 320 150" class="mt-4 w-full" role="img" aria-labelledby="dfm-sink-title">
+            <title id="dfm-sink-title">A rib close to the outer wall thickness causes a sink mark; a thinner, cored rib resolves it</title>
+            <line x1="160" y1="12" x2="160" y2="122" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="3 3" />
+
+            <g filter="url(#engShadow)">
+              <rect x="20" y="15" width="120" height="16" rx="2" fill="url(#toolSteel)" />
+              <rect x="70" y="31" width="22" height="60" rx="2" fill="url(#toolSteel)" />
+              <rect x="180" y="15" width="120" height="16" rx="2" fill="url(#toolSteel)" />
+              <rect x="228" y="31" width="16" height="60" rx="2" fill="url(#toolSteel)" />
+              <rect x="231" y="31" width="8" height="38" fill="var(--color-navy)" stroke="#5fd0a8" stroke-width="0.75" stroke-dasharray="1.5 1.5" />
             </g>
-            <circle cx="180" cy="47" r="8" fill="none" stroke="#f0b45c" stroke-width="2" stroke-dasharray="2.5 2.5">
-              <animateTransform attributeName="transform" type="rotate" from="0 180 47" to="360 180 47" dur="6s" repeatCount="indefinite" />
-            </circle>
 
-            <line x1="112" y1="36" x2="112" y2="144" stroke="#8fa0b3" stroke-width="1" marker-start="url(#dimArrowBefore)" marker-end="url(#dimArrowBefore)" />
-            <text x="100" y="94" fill="#c3ccd6" font-size="10.5" font-family="var(--font-mono, ui-monospace, monospace)" text-anchor="middle" transform="rotate(-90 100 94)">WALL t</text>
+            <circle cx="81" cy="19" r="5" fill="none" stroke="#f0b45c" stroke-width="1.75" stroke-dasharray="2 2" />
+            <circle cx="236" cy="19" r="5.5" fill="#0f2436" stroke="#5fd0a8" stroke-width="1.25" />
+            <path d="M233 19 l2 2 l4 -4.5" fill="none" stroke="#5fd0a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 
-            <line x1="160" y1="164" x2="200" y2="164" stroke="#8fa0b3" stroke-width="1" marker-start="url(#dimArrowBefore)" marker-end="url(#dimArrowBefore)" />
-            <text x="180" y="182" fill="#c3ccd6" font-size="10.5" font-family="var(--font-mono, ui-monospace, monospace)" text-anchor="middle">RIB ≈ 80% OF WALL t</text>
+            <text x="81" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">rib ≈ 80% t</text>
+            <text x="236" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">rib ≈ 55% + cored</text>
+            <text x="80" y="135" fill="#94a3b8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">BEFORE</text>
+            <text x="240" y="135" fill="#5fd0a8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">AFTER</text>
           </svg>
 
-          <p class="mt-4 text-sm leading-relaxed text-slate-300">
-            <strong class="text-white">Before.</strong> The rib is nearly as thick as the outer
-            wall. As the part cools, the thicker junction shrinks unevenly
-            and pulls a visible dimple into the outer face.
+          <p class="mt-3 text-xs leading-relaxed text-slate-300">
+            A rib nearly as thick as the wall cools unevenly and pulls a
+            visible dimple into the outer face. Thinning and coring the rib
+            removes the risk.
           </p>
         </div>
 
-        <div class="blueprint-grid overflow-hidden rounded-xl border border-emerald-400/30 bg-white/[0.03] p-6">
-          <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-300">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            Risk resolved
-          </span>
+        <div class="blueprint-grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <h4 class="text-sm font-bold text-white">Draft angle</h4>
+          <p class="mt-1 text-xs text-slate-400">Can the part release from the mold?</p>
 
-          <svg viewBox="0 0 360 200" class="mt-4 w-full" role="img" aria-labelledby="dfm-after-title">
-            <title id="dfm-after-title">After: rib thickness reduced and cored, sink mark eliminated</title>
-            <defs>
-              <linearGradient id="partFillAfter" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#b6c0cc" />
-                <stop offset="100%" stop-color="#7e8b9a" />
-              </linearGradient>
-              <marker id="dimArrowAfter" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M0,0 L10,5 L0,10 z" fill="#7c8ba0" />
-              </marker>
-              <filter id="softShadowAfter" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35" />
-              </filter>
-            </defs>
+          <svg viewBox="0 0 320 150" class="mt-4 w-full" role="img" aria-labelledby="dfm-draft-title">
+            <title id="dfm-draft-title">A boss with vertical walls drags on ejection; a tapered boss releases cleanly</title>
+            <line x1="160" y1="12" x2="160" y2="122" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="3 3" />
 
-            <g filter="url(#softShadowAfter)">
-              <rect x="20" y="36" width="320" height="22" rx="2" fill="url(#partFillAfter)" />
-              <rect x="168" y="58" width="24" height="86" rx="2" fill="url(#partFillAfter)" />
-              <rect x="174" y="58" width="12" height="56" fill="var(--color-navy)" stroke="#5fd0a8" stroke-width="1" stroke-dasharray="2 2" />
+            <g filter="url(#engShadow)">
+              <rect x="20" y="88" width="120" height="12" fill="url(#toolSteel)" />
+              <rect x="60" y="30" width="40" height="58" fill="url(#toolSteel)" />
+              <rect x="180" y="88" width="120" height="12" fill="url(#toolSteel)" />
+              <polygon points="222,88 258,88 251,30 229,30" fill="url(#toolSteel)" />
             </g>
-            <circle cx="180" cy="47" r="9" fill="#0f2436" stroke="#5fd0a8" stroke-width="1.5" />
-            <path d="M175 47 l4 4 l7 -8" fill="none" stroke="#5fd0a8" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
 
-            <line x1="112" y1="36" x2="112" y2="144" stroke="#8fa0b3" stroke-width="1" marker-start="url(#dimArrowAfter)" marker-end="url(#dimArrowAfter)" />
-            <text x="100" y="94" fill="#c3ccd6" font-size="10.5" font-family="var(--font-mono, ui-monospace, monospace)" text-anchor="middle" transform="rotate(-90 100 94)">WALL t</text>
+            <path d="M80 26 l-6 -10 M80 26 l6 -10" stroke="#f0b45c" stroke-width="1.75" stroke-linecap="round" />
+            <path d="M64 34 l7 6 M96 34 l-7 6" stroke="#f0b45c" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M240 26 v-14" stroke="#5fd0a8" stroke-width="1.75" stroke-linecap="round" />
+            <path d="M235 16 l5 -6 l5 6" fill="none" stroke="#5fd0a8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
 
-            <line x1="168" y1="164" x2="192" y2="164" stroke="#8fa0b3" stroke-width="1" marker-start="url(#dimArrowAfter)" marker-end="url(#dimArrowAfter)" />
-            <text x="180" y="182" fill="#c3ccd6" font-size="10.5" font-family="var(--font-mono, ui-monospace, monospace)" text-anchor="middle">RIB ≈ 55% + CORED</text>
+            <text x="80" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">0&#176; draft</text>
+            <text x="240" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">2&#176; draft</text>
+            <text x="80" y="135" fill="#94a3b8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">BEFORE</text>
+            <text x="240" y="135" fill="#5fd0a8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">AFTER</text>
           </svg>
 
-          <p class="mt-4 text-sm leading-relaxed text-slate-300">
-            <strong class="text-white">After.</strong> Reducing the rib to roughly half the wall
-            thickness and adding a cored channel keeps the same outer
-            geometry the customer specified, with even cooling and no sink
-            mark — caught in review, before steel was cut.
+          <p class="mt-3 text-xs leading-relaxed text-slate-300">
+            Vertical walls drag and scuff against the steel as the part
+            ejects. A couple of degrees of draft lets it release cleanly,
+            every cycle.
+          </p>
+        </div>
+
+        <div class="blueprint-grid overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-5">
+          <h4 class="text-sm font-bold text-white">Wall thickness transition</h4>
+          <p class="mt-1 text-xs text-slate-400">Thick-to-thin wall junctions</p>
+
+          <svg viewBox="0 0 320 150" class="mt-4 w-full" role="img" aria-labelledby="dfm-wall-title">
+            <title id="dfm-wall-title">An abrupt wall thickness step warps on cooling; a gradual transition resolves it</title>
+            <line x1="160" y1="12" x2="160" y2="122" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="3 3" />
+
+            <g filter="url(#engShadow)">
+              <path d="M20,96 L20,40 L80,40 L80,66 L140,66 L140,96 Z" fill="url(#toolSteel)" />
+              <path d="M180,96 L180,40 L240,40 L265,60 L300,60 L300,96 Z" fill="url(#toolSteel)" />
+            </g>
+
+            <path d="M50 34 q10 -10 20 0" fill="none" stroke="#f0b45c" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="80" cy="37" r="4" fill="none" stroke="#f0b45c" stroke-width="1.5" stroke-dasharray="1.5 1.5" />
+            <path d="M245 22 l4 4 l7 -8" fill="none" stroke="#5fd0a8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+
+            <text x="80" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">abrupt step</text>
+            <text x="240" y="112" fill="#c3ccd6" font-size="9" text-anchor="middle">gradual transition</text>
+            <text x="80" y="135" fill="#94a3b8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">BEFORE</text>
+            <text x="240" y="135" fill="#5fd0a8" font-size="8.5" font-weight="700" letter-spacing="0.05em" text-anchor="middle">AFTER</text>
+          </svg>
+
+          <p class="mt-3 text-xs leading-relaxed text-slate-300">
+            A sharp step between thick and thin walls cools unevenly and
+            warps. A chamfered or radiused transition keeps the part flat.
           </p>
         </div>
       </div>
