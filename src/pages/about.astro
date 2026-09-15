@@ -7,6 +7,7 @@ import CtaBanner from "../components/CtaBanner.astro";
 import officePhoto from "../assets/photos/ningbo-office-corridor.jpg";
 import entrancePhoto from "../assets/photos/ningbo-facility-entrance.jpg";
 import teamPhoto from "../assets/photos/video-office-team.jpg";
+import isoCertsPhoto from "../assets/photos/ningbo-iso-certificates.jpg";
 ---
 
 <Layout
@@ -54,6 +55,19 @@ import teamPhoto from "../assets/photos/video-office-team.jpg";
           <li>Both facilities have completed amfori BSCI monitoring. Monitoring information is available for review on request.</li>
           <li>Our Ningbo facility is ISO 9001, ISO 14001 and ISO 45001 certified.</li>
         </ul>
+
+        <figure class="mt-2">
+          <Image
+            src={isoCertsPhoto}
+            alt="Ningbo facility ISO 9001, ISO 14001 and ISO 45001 certificates"
+            widths={[480, 768, 960]}
+            sizes="(min-width: 1024px) 700px, 100vw"
+            class="w-full max-w-2xl rounded-lg border border-[var(--color-line)] bg-white"
+          />
+          <figcaption class="mt-2 text-xs text-slate-500">
+            Ningbo facility: ISO 9001, ISO 14001 and ISO 45001 certificates.
+          </figcaption>
+        </figure>
 
         <h2 class="text-lg font-semibold text-[var(--color-navy)]">Locations</h2>
         <p><strong>Vietnam:</strong> Plot No. 41, Map Sheet No. 6, Ba Tri Quarter, Tan Hiep Ward, Ho Chi Minh City, Vietnam.</p>
