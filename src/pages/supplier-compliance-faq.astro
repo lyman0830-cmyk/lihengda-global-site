@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const faqs = [
+  {
+    q: "Does Lihengda have amfori BSCI monitoring?",
+    a: "Yes. Both our Ningbo, China and Ho Chi Minh City, Vietnam facilities have completed amfori BSCI monitoring. We can provide the relevant monitoring information for review on request.",
+  },
+  {
+    q: "What's the BSCI rating for each facility?",
+    a: "Our Vietnam facility holds a C rating, valid to July 24, 2027 (verified by Intertek). Our Ningbo facility's current rating is being reconfirmed — ask us and we'll follow up directly.",
+  },
+  {
+    q: "Is Lihengda ISO certified?",
+    a: "Our Ningbo, China facility is ISO 9001, ISO 14001 and ISO 45001 certified. Our Vietnam facility does not currently hold ISO certification — it's a newer facility (established 2025) and certification hasn't been pursued there yet.",
+  },
+  {
+    q: "Can I audit the factory or send a third-party auditor?",
+    a: "Yes — reach out and we'll arrange a facility visit, or coordinate with a third-party auditor of your choice at either base.",
+  },
+  {
+    q: "What materials does Lihengda work with?",
+    a: "ABS, PP, PE, PA, POM, stainless steel, carbon steel, aluminum, and zinc alloy, across both facilities.",
+  },
+  {
+    q: "Does either facility offer two-shot molding or aging testing?",
+    a: "No two-shot (two-color) injection molding at either facility currently. We also don't run aging tests in-house today — if your program requires one, tell us and we'll scope it.",
+  },
+  {
+    q: "What are your MOQ and lead times?",
+    a: "These vary by part, process and which base is producing it, so we don't quote a single number for every project. Send us your drawing, material and target volume and we'll give you a specific figure for your program.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="Supplier Compliance & Audit FAQ"
+  description="BSCI and ISO certification, factory audits, materials and process limits at Lihengda's Ningbo, China and Ho Chi Minh City, Vietnam facilities."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <PageHero
+    eyebrow="FAQ"
+    title="Supplier compliance & audits"
+    lede="What buyers ask us before they qualify a new supplier — certifications, audits, and what we won't overstate."
+  />
+
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <div class="space-y-10">
+      {faqs.map((f) => (
+        <div>
+          <h2 class="text-lg font-semibold text-[var(--color-navy)]">{f.q}</h2>
+          <p class="mt-2 leading-relaxed text-slate-600">{f.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-sm text-slate-500">
+      More on facility details and process capability on our <a href="/about/" class="font-semibold text-[var(--color-steel)] hover:underline">About &amp; Compliance page</a>, or how to choose between our two bases on our <a href="/choosing-a-manufacturer/" class="font-semibold text-[var(--color-steel)] hover:underline">China vs Vietnam FAQ</a>.
+    </p>
+  </section>
+
+  <CtaBanner heading="Have a compliance question specific to your project?" body="Send us your requirements — we'll tell you plainly what we can and can't confirm." />
+</Layout>

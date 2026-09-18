@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+
+const faqs = [
+  {
+    q: "What's the difference between manufacturing in China and Vietnam?",
+    a: "It comes down to tariff exposure, workforce, and which processes a factory actually has in-house. Lihengda's Ningbo, China facility (est. 2009) has a mature supply chain, established tooling, and in-house metrology — but no laser cutting. Our Ho Chi Minh City, Vietnam facility (est. 2025) offers country-of-origin outside China and adds laser cutting, laser tube cutting and bending, which Ningbo doesn't have.",
+  },
+  {
+    q: "When does it make sense to manufacture in Vietnam instead of China?",
+    a: "Three common reasons: you need country-of-origin outside China for tariff purposes, you want a China+1 supply chain so you're not single-sourced, or your part needs laser-cut sheet metal — which our Vietnam facility does and our Ningbo facility does not.",
+  },
+  {
+    q: "Can one supplier produce part of my order in China and part in Vietnam?",
+    a: "Yes, at Lihengda. Our Vietnam facility is a subsidiary of the Ningbo company — same management, one point of contact — so work can be split across both bases by process or by volume as your sourcing needs change.",
+  },
+  {
+    q: "Do both of Lihengda's facilities hold the same certifications?",
+    a: "No. Both facilities have completed amfori BSCI monitoring. Only our Ningbo facility is ISO 9001, ISO 14001 and ISO 45001 certified — our Vietnam facility does not hold ISO certification.",
+  },
+  {
+    q: "What manufacturing processes does each Lihengda base have in-house?",
+    a: "Ningbo, China: plastic injection molding (including insert molding and overmolding), CNC machining, welding, tube bending, box-build assembly, functional testing, inspection, and packaging (including cleanroom). Ho Chi Minh City, Vietnam: the same injection molding, CNC machining, assembly, inspection and packaging, plus laser cutting, laser tube cutting, bending, and robotic and TIG welding.",
+  },
+  {
+    q: "Does either facility offer two-shot (two-color) injection molding?",
+    a: "No — neither our Ningbo nor our Vietnam facility currently offers two-shot molding. If your part needs it, tell us early in the DFM review and we'll discuss alternatives.",
+  },
+  {
+    q: "What should I send a manufacturer to get an accurate quote?",
+    a: "CAD files or drawings, your target material, target volume, and rough timeline. For crowdfunding or early-stage products, a working prototype or reference sample also helps us scope tooling and DFM changes faster.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+
+<Layout
+  title="China vs Vietnam Manufacturing — FAQ"
+  description="Common questions on choosing between a China and Vietnam contract manufacturer — certifications, processes, tariffs, and splitting production across both."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <PageHero
+    eyebrow="FAQ"
+    title="Choosing a China vs Vietnam manufacturer"
+    lede="Straight answers to the questions we get most from buyers comparing Ningbo, China and Ho Chi Minh City, Vietnam — or ask us directly and we'll recommend one, or both."
+  />
+
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <div class="space-y-10">
+      {faqs.map((f) => (
+        <div>
+          <h2 class="text-lg font-semibold text-[var(--color-navy)]">{f.q}</h2>
+          <p class="mt-2 leading-relaxed text-slate-600">{f.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="mt-12 text-sm text-slate-500">
+      See the full side-by-side breakdown on our <a href="/china-vietnam/" class="font-semibold text-[var(--color-steel)] hover:underline">China &amp; Vietnam comparison page</a>, or compliance details on our <a href="/supplier-compliance-faq/" class="font-semibold text-[var(--color-steel)] hover:underline">Supplier Compliance FAQ</a>.
+    </p>
+  </section>
+
+  <CtaBanner heading="Not sure which base fits?" body="Tell us your target market, tariff situation and volume — we'll recommend China, Vietnam, or both." />
+</Layout>
