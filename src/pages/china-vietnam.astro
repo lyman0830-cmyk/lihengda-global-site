@@ -5,35 +5,27 @@ import PageHero from "../components/PageHero.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import ningboPhoto from "../assets/photos/ningbo-facility-entrance.jpg";
 import vietnamPhoto from "../assets/photos/vietnam-facility-entrance.jpg";
-import ningboEngineeringPhoto from "../assets/photos/engineering-office.jpg";
 import ningboCleanroomPhoto from "../assets/photos/cleanroom-assembly.jpg";
 import ningboInjectionPhoto from "../assets/photos/injection-molding-machines.jpg";
-import ningboCncPhoto from "../assets/photos/cnc-machines.jpg";
 import ningboAssemblyPhoto from "../assets/photos/assembly-line-wide.jpg";
 import ningboQualityLabPhoto from "../assets/photos/video-quality-lab.jpg";
 import vietnamWeldingPhoto from "../assets/photos/vietnam-robotic-welding.jpg";
 import vietnamLaserPhoto from "../assets/photos/vietnam-laser-cutting.jpg";
 import vietnamCncPhoto from "../assets/photos/vietnam-cnc.jpg";
-import vietnamInjectionPhoto from "../assets/photos/vietnam-injection-molding.jpg";
-import vietnamLobbyPhoto from "../assets/photos/vietnam-lobby-reception.jpg";
 import vietnamFloorWidePhoto from "../assets/photos/vietnam-injection-floor-wide.jpg";
 
 const ningboGallery = [
   { src: ningboInjectionPhoto, alt: "Injection molding machines, Ningbo facility" },
-  { src: ningboCncPhoto, alt: "CNC machines, Ningbo facility" },
   { src: ningboAssemblyPhoto, alt: "Assembly line, Ningbo facility" },
   { src: ningboCleanroomPhoto, alt: "Cleanroom assembly area, Ningbo facility" },
   { src: ningboQualityLabPhoto, alt: "Quality lab, Ningbo facility" },
-  { src: ningboEngineeringPhoto, alt: "Engineering office, Ningbo facility" },
 ];
 
 const vietnamGallery = [
   { src: vietnamFloorWidePhoto, alt: "Injection molding production floor, Vietnam facility" },
-  { src: vietnamInjectionPhoto, alt: "Injection molding, Vietnam facility" },
   { src: vietnamWeldingPhoto, alt: "Robotic welding arm, Vietnam facility" },
   { src: vietnamLaserPhoto, alt: "Laser cutting machine, Vietnam facility" },
   { src: vietnamCncPhoto, alt: "CNC machining, Vietnam facility" },
-  { src: vietnamLobbyPhoto, alt: "Reception lobby, Vietnam facility" },
 ];
 
 type Cell = string | string[];
@@ -85,13 +77,28 @@ const rows: [string, Cell, Cell][] = [
 
 <Layout
   title="China & Vietnam"
-  description="Two manufacturing bases, one point of contact. Compare Ningbo, China and Ho Chi Minh City, Vietnam — or let us recommend one for your project."
+  description="Two manufacturing bases, one point of contact. Compare Ningbo, China and Ho Chi Minh City, Vietnam, or let us recommend one for your project."
 >
   <PageHero
     eyebrow="China & Vietnam"
     title="Two manufacturing bases. One point of contact."
     lede="Not sure which base fits? Tell us your target market, tariff situation and volume, and we will recommend one — or split the program across both."
-  />
+  >
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/contact/"
+        class="rounded-md bg-[var(--color-steel)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)]"
+      >
+        Help me choose a base
+      </a>
+      <a
+        href="/choosing-a-manufacturer/"
+        class="rounded-md border border-[var(--color-line)] px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-steel)]"
+      >
+        Read the FAQ
+      </a>
+    </div>
+  </PageHero>
 
   <section class="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
     <div class="grid gap-6 md:grid-cols-2">
@@ -177,7 +184,12 @@ const rows: [string, Cell, Cell][] = [
   </section>
 
   <section class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-    <div class="overflow-x-auto rounded-lg border border-[var(--color-line)] bg-white">
+    <details id="compare" class="group rounded-lg border border-[var(--color-line)] bg-white">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-base font-semibold text-[var(--color-navy)] md:hidden">
+        <span>Full side-by-side comparison</span>
+        <span class="text-[var(--color-steel)] transition group-open:rotate-45" aria-hidden="true">+</span>
+      </summary>
+    <div class="overflow-x-auto">
       <table class="w-full min-w-[640px] border-collapse text-left text-sm">
         <thead>
           <tr class="border-b border-[var(--color-line)] bg-[var(--color-bg)]">
@@ -215,13 +227,13 @@ const rows: [string, Cell, Cell][] = [
         </tbody>
       </table>
     </div>
+    </details>
   </section>
 
-  <section class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-    <p class="text-sm text-slate-500">
-      Have a specific question? See our <a href="/choosing-a-manufacturer/" class="font-semibold text-[var(--color-steel)] hover:underline">China vs Vietnam FAQ</a>.
-    </p>
-  </section>
+  <script>
+    const compare = document.getElementById("compare") as HTMLDetailsElement | null;
+    if (compare && window.matchMedia("(min-width: 768px)").matches) compare.open = true;
+  </script>
 
   <CtaBanner heading="Ask us which base fits your project" body="Send your target market, tariff situation and volume — we'll recommend China, Vietnam, or both." />
 </Layout>

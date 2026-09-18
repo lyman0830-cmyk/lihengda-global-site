@@ -10,8 +10,8 @@ const isActive = (href: string) =>
 
 <header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-white/95 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-    <a href="/" class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-[var(--color-navy)]">
-      <Image src={logo} alt="Lihengda" class="h-10 w-auto" />
+    <a href="/" class="flex min-w-0 items-center gap-2 text-base font-bold tracking-tight text-[var(--color-navy)] sm:gap-2.5 sm:text-lg">
+      <Image src={logo} alt="Lihengda" class="h-8 w-auto sm:h-10" />
       Lihengda Global
     </a>
 
@@ -36,15 +36,23 @@ const isActive = (href: string) =>
       Request a Quote
     </a>
 
-    <button
-      id="menu-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      class="rounded-md border border-[var(--color-line)] px-3 py-2 text-sm font-medium lg:hidden"
-    >
-      Menu
-    </button>
+    <div class="flex shrink-0 items-center gap-2 lg:hidden">
+      <a
+        href="/contact/"
+        class="rounded-md bg-[var(--color-steel)] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-steel-light)]"
+      >
+        Get a Quote
+      </a>
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="rounded-md border border-[var(--color-line)] px-3 py-2 text-sm font-medium"
+      >
+        Menu
+      </button>
+    </div>
   </div>
 
   <div id="mobile-menu" hidden class="border-t border-[var(--color-line)] bg-white px-4 py-4 lg:hidden">

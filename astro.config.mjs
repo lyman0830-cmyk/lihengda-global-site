@@ -12,5 +12,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      filter: (page) => !page.endsWith('/engineering/') && !page.includes('/thank-you'),
+    }),
+  ]
 });

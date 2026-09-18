@@ -6,9 +6,11 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  fullTitle?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, fullTitle = false } = Astro.props;
+const pageTitle = fullTitle ? title : `${title} · Lihengda Global`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const organizationSchema = {
@@ -51,12 +53,12 @@ const organizationSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title} · Lihengda Global</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} · Lihengda Global`} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
