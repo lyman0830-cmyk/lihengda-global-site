@@ -5,11 +5,12 @@ interface Props {
   src: ImageMetadata;
   alt: string;
   caption?: string;
+  tall?: boolean;
 }
-const { src, alt, caption } = Astro.props;
+const { src, alt, caption, tall = false } = Astro.props;
 ---
 
-<section class="relative h-[46vh] min-h-[320px] max-h-[520px] w-full overflow-hidden bg-[var(--color-navy)]">
+<section class:list={["relative w-full overflow-hidden bg-[var(--color-navy)]", tall ? "h-[64vh] min-h-[340px] max-h-[720px]" : "h-[46vh] min-h-[320px] max-h-[520px]"]}>
   <Image
     src={src}
     alt={alt}
