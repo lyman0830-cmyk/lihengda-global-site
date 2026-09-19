@@ -1,24 +1,26 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import PhotoBand from "../components/PhotoBand.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import assemblyPhoto from "../assets/photos/video-assembly-line.jpg";
-import kitchenThumb from "../assets/photos/assembly-line-worker.jpg";
-import homeThumb from "../assets/photos/cleanroom-assembly.jpg";
-import petThumb from "../assets/photos/cnc-machines.jpg";
-import personalCareThumb from "../assets/photos/video-quality-lab.jpg";
-import bathThumb from "../assets/photos/vietnam-cnc.jpg";
-import woodworkingThumb from "../assets/photos/tube-bending-ningbo.jpg";
+
+const icons: Record<string, string> = {
+  kitchen: '<rect x="20" y="6" width="24" height="22" rx="4"/><path d="M28 12v10M36 12v10M32 28v6"/><rect x="28" y="34" width="8" height="24" rx="4"/>',
+  home: '<path d="M8 30 32 10l24 20"/><path d="M14 26v28h36V26"/><path d="M27 54V38h10v16"/>',
+  pet: '<path d="M32 36c-8 0-14 6-12 12 1.5 4 6 4 12 4s10.5 0 12-4c2-6-4-12-12-12z"/><circle cx="14" cy="28" r="5"/><circle cx="26" cy="17" r="5"/><circle cx="40" cy="17" r="5"/><circle cx="52" cy="28" r="5"/>',
+  care: '<rect x="8" y="14" width="48" height="12" rx="3"/><path d="M14 26v24M22 26v24M30 26v24M38 26v24M46 26v24"/>',
+  bath: '<path d="M12 24h40l-4 32H16z"/><path d="M20 24a12 12 0 0 1 24 0"/><path d="M22 36h20"/>',
+  wood: '<rect x="6" y="22" width="52" height="20" rx="2"/><path d="M14 22v8M22 22v12M30 22v8M38 22v12M46 22v8"/>',
+};
 
 const categories = [
-  { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components.", img: kitchenThumb, alt: "Assembly line, Ningbo facility" },
-  { title: "Home & living products", body: "Everyday products that need consistent fit, finish and assembly.", img: homeThumb, alt: "Cleanroom assembly area, Ningbo facility" },
-  { title: "Pet products", body: "Durable plastic and metal builds for daily use.", img: petThumb, alt: "CNC machines, Ningbo facility" },
-  { title: "Personal care & grooming tools", body: "Including plastic and zinc-alloy razors — a category we build today.", img: personalCareThumb, alt: "Quality lab, Ningbo facility" },
-  { title: "Bath accessories, storage & cleaning tools", body: "Molded and metal components assembled and packed as a finished product.", img: bathThumb, alt: "CNC machining, Vietnam facility" },
-  { title: "Woodworking tools", body: "Metal and plastic tool components built to spec.", img: woodworkingThumb, alt: "Tube bending machine, Ningbo facility" },
+  { title: "Kitchen tools & accessories", body: "Handles, holders and hardware that combine molded plastic with metal components.", icon: "kitchen" },
+  { title: "Home & living products", body: "Everyday products that need consistent fit, finish and assembly.", icon: "home" },
+  { title: "Pet products", body: "Durable plastic and metal builds for daily use.", icon: "pet" },
+  { title: "Personal care & grooming tools", body: "Including plastic and zinc-alloy razors — a category we build today.", icon: "care" },
+  { title: "Bath accessories, storage & cleaning tools", body: "Molded and metal components assembled and packed as a finished product.", icon: "bath" },
+  { title: "Woodworking tools", body: "Metal and plastic tool components built to spec.", icon: "wood" },
 ];
 ---
 
@@ -42,13 +44,19 @@ const categories = [
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {categories.map((c) => (
         <div class="overflow-hidden rounded-lg border border-[var(--color-line)] bg-white">
-          <Image
-            src={c.img}
-            alt={c.alt}
-            widths={[320, 480, 640]}
-            sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
-            class="h-40 w-full object-cover"
-          />
+          <div class="flex h-40 items-center justify-center bg-gradient-to-br from-[var(--color-navy)] to-[var(--color-navy-2)] text-white/85">
+            <svg
+              viewBox="0 0 64 64"
+              class="h-20 w-20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              set:html={icons[c.icon]}
+            />
+          </div>
           <div class="p-6">
             <h2 class="text-base font-semibold text-[var(--color-navy)]">{c.title}</h2>
             <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.body}</p>
