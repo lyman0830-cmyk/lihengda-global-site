@@ -2,12 +2,12 @@
 
 > Lihengda operates two manufacturing bases — Ningbo, China (est. 2009) and Ho Chi Minh City, Vietnam (est. 2025) — providing plastic injection molding, metal fabrication, CNC machining, assembly, inspection and packaging for OEM/ODM consumer products, under one point of contact.
 
-Lihengda is a manufacturing partner (not a brand or retailer) for companies that need a molded-plastic part combined with a metal component, finished as an inspected, packed product. Ningbo Lihengda Machinery Co., Ltd. (China, since 2009) is the parent company; Lihengda (Vietnam) International Co., Ltd. (since 2025) is its subsidiary, offering a manufacturing base outside China. Both facilities have completed amfori BSCI monitoring; the Ningbo facility is ISO 9001, ISO 14001 and ISO 45001 certified. Lihengda does not offer two-shot (two-color) injection molding at either facility.
+Lihengda is a manufacturing partner (not a brand or retailer) for companies that need a molded-plastic part combined with a metal component, finished as an inspected, packed product. Ningbo Lihengda Machinery Co., Ltd. (China, since 2009) is the parent company; Lihengda (Vietnam) International Co., Ltd. (since 2025) is its subsidiary, offering a manufacturing base outside China. Both facilities have completed amfori BSCI monitoring; the Ningbo facility is ISO 9001, ISO 14001 and ISO 45001 certified.
 
 ## Capabilities
 
 - [Engineering & Manufacturing](https://lihengdaglobal.com/manufacturing/): DFM review, tooling strategy, material selection, dimensional verification, and an overview of all in-house processes at both bases.
-- [Injection Molding](https://lihengdaglobal.com/manufacturing/injection-molding/): Insert molding and overmolding at both facilities; no two-shot molding.
+- [Injection Molding](https://lihengdaglobal.com/manufacturing/injection-molding/): Insert molding and overmolding at both facilities.
 - [Sheet Metal & Welding](https://lihengdaglobal.com/manufacturing/sheet-metal-welding/): Laser cutting, laser tube cutting and bending in Vietnam; welding and tube bending in Ningbo.
 - [CNC Machining](https://lihengdaglobal.com/manufacturing/cnc-machining/): Metal parts, fixtures and low-volume components at both bases.
 - [Box-Build Assembly, Inspection & Packaging](https://lihengdaglobal.com/manufacturing/box-build-assembly/): Final assembly, functional testing, inspection and retail-ready (including cleanroom) packaging.
@@ -23,7 +23,7 @@ Lihengda is a manufacturing partner (not a brand or retailer) for companies that
 ## FAQ
 
 - [China vs Vietnam Manufacturing FAQ](https://lihengdaglobal.com/choosing-a-manufacturer/): When to choose Ningbo vs Ho Chi Minh City, certifications by base, in-house processes by base, splitting production across both.
-- [Supplier Compliance & Audit FAQ](https://lihengdaglobal.com/supplier-compliance-faq/): amfori BSCI ratings, ISO certification scope, factory audits, materials, two-shot molding and aging-test limits, MOQ/lead-time policy.
+- [Supplier Compliance & Audit FAQ](https://lihengdaglobal.com/supplier-compliance-faq/): amfori BSCI ratings, ISO certification scope, factory audits, materials, aging-test policy, MOQ/lead-time policy.
 
 ## Contact
 
